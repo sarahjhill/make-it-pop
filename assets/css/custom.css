@@ -1,0 +1,325 @@
+/*----------------------------------------------
+
+[Custom CSS]
+
+Small, self-authored stylesheet that replaces the
+old vendor "menu-engine" / "menu-grid" files (the
+nav's megamenu system) with a flat, simplified nav,
+and adds the few extra components introduced when
+main.js was rebuilt without jQuery/GSAP/ProgressBar.
+
+theme.css / core.css / main.css are untouched — this
+file only adds what those no longer cover.
+
+----------------------------------------------*/
+
+/* #region Nav */
+
+.mip-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.mip-header .navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 0;
+	background-color: rgba(26, 26, 32, 0.55);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	transition: background-color 0.3s ease;
+}
+
+.mip-header .navbar .container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.mip-header .navbar-brand {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+
+.mip-header .navbar-brand .logo {
+	height: 34px;
+	width: auto;
+}
+
+.mip-header .navbar-toggler {
+	width: 32px;
+	height: 22px;
+	position: relative;
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.mip-header .navbar-toggler-icon {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.mip-header .navbar-toggler .line {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: var(--white-color);
+	border-radius: 2px;
+	transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+}
+
+.mip-header .navbar-toggler .line:nth-child(1) { top: 0; }
+.mip-header .navbar-toggler .line:nth-child(2) { top: 10px; }
+.mip-header .navbar-toggler .line:nth-child(3) { top: 20px; }
+
+.mip-header .navbar-toggler[aria-expanded="true"] .line:nth-child(1) {
+	top: 10px;
+	transform: rotate(45deg);
+}
+
+.mip-header .navbar-toggler[aria-expanded="true"] .line:nth-child(2) {
+	opacity: 0;
+}
+
+.mip-header .navbar-toggler[aria-expanded="true"] .line:nth-child(3) {
+	top: 10px;
+	transform: rotate(-45deg);
+}
+
+.mip-header .navbar-nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 2rem;
+}
+
+.mip-header .nav-link {
+	display: block;
+	font-family: var(--secondary-font);
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--white-color);
+	text-decoration: none;
+	position: relative;
+	padding: 0.25rem 0;
+}
+
+.mip-header .nav-link::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 2px;
+	background-color: var(--tertiary-color);
+	transition: width 0.3s ease;
+}
+
+.mip-header .nav-link:hover::after {
+	width: 100%;
+}
+
+@media (max-width: 991px) {
+
+	.mip-header .navbar-collapse {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		max-height: 0;
+		overflow: hidden;
+		background-color: rgba(26, 26, 32, 0.97);
+		transition: max-height 0.35s ease;
+	}
+
+	.mip-header .navbar-collapse.show {
+		max-height: 400px;
+	}
+
+	.mip-header .navbar-nav {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0;
+		padding: 1rem 1.5rem 1.5rem;
+	}
+
+	.mip-header .navbar-nav .nav-item {
+		width: 100%;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid var(--white-10-color);
+	}
+}
+
+@media (min-width: 992px) {
+
+	.mip-header .navbar-collapse {
+		display: flex !important;
+		flex-basis: auto;
+		flex-grow: 0;
+		margin-left: auto;
+	}
+
+	.mip-header .navbar-toggler {
+		display: none;
+	}
+}
+
+/* #endregion Nav */
+
+/* #region Typed text */
+
+/* #typed-strings is just the data source main.js reads from to
+   type out one line at a time — it isn't meant to be visible. */
+#typed-strings {
+	display: none;
+}
+
+/* #endregion Typed text */
+
+/* #region Scroll reveal (replaces AOS) */
+
+[data-aos] {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos].in-view {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+[data-aos][data-aos-delay="100"].in-view {
+	transition-delay: 0.1s;
+}
+
+/* #endregion Scroll reveal */
+
+/* #region Stat counter (replaces ProgressBar.js) */
+
+.stat-counter {
+	text-align: center;
+}
+
+.stat-counter .value {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 88px;
+	padding: 0.5rem 1rem;
+	background-color: var(--black-color);
+	color: var(--white-color);
+	font-family: var(--secondary-font);
+	font-size: 1.75rem;
+	font-weight: 800;
+	border-radius: 999px;
+	margin-bottom: 0.75rem;
+}
+
+.stat-counter .title {
+	margin: 0;
+}
+
+/* #endregion Stat counter */
+
+/* #region Portfolio filter */
+
+/*
+The shuffle-item tiles are nested one level inside the
+".row" (row > .gapped-grid.shuffle-container > .shuffle-item),
+so Bootstrap's own grid context never reaches them, and the
+old col-12/col-md-6/col-lg-4 percentage widths only resolve
+correctly at exact Bootstrap breakpoints — on a laptop viewport
+that falls between them, a tile can fall back to col-12 (100%
+width) and balloon across the whole screen. Rather than fight
+those breakpoints, this drops in a real CSS grid with a capped
+column width, so tiles reflow naturally at any screen size and
+never grow past a sensible max.
+*/
+
+.shuffle-container.gapped-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
+	justify-content: center;
+	gap: 1.5rem;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+}
+
+.shuffle-item {
+	/* neutralise the old Bootstrap col-* width/flex rules so
+	   they can't fight the grid at any breakpoint */
+	width: 100% !important;
+	max-width: 100% !important;
+	flex: none !important;
+	padding: 0;
+	margin: 0;
+	transition: opacity 0.3s ease;
+}
+
+.shuffle-item .item {
+	display: block;
+	height: 100%;
+}
+
+/* The source images are raw, mixed-aspect-ratio screenshots
+(some near-square, some wide, some tall). Left at width:100%/
+height:auto they render at wildly different, often huge,
+heights. Cropping each tile to a consistent box keeps the grid
+tidy and stops any one image from towering over the page. */
+
+.shuffle-item .image-wrapper {
+	aspect-ratio: 4 / 3;
+}
+
+.shuffle-item .image-wrapper .image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top center;
+}
+
+/* #endregion Portfolio filter */
+
+/* #region Closing CTA gradient (replaces missing video asset) */
+
+.gradient-panel {
+	width: 100%;
+	height: 100%;
+	min-height: 70vh;
+	background: linear-gradient(120deg, var(--secondary-color), var(--tertiary-color), var(--primary-color));
+	background-size: 200% 200%;
+	animation: gradient-shift 12s ease infinite;
+}
+
+@keyframes gradient-shift {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+/* #endregion Closing CTA gradient */
+
+/* #region Cursor active state */
+
+.cursor-effect.is-active .cursor-effect-inner {
+	stroke-width: 2px;
+}
+
+/* #endregion Cursor active state */
