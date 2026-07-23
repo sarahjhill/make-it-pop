@@ -34,8 +34,16 @@ reaches, so it was inheriting "transparent" without inheriting the
 gradient background needed to fill it back in — making the word
 disappear. Rather than just giving it back a flat color, give it the
 same shifting brand-color shimmer as the nav logo text, so the
-accent word pops at least as much as the rest of the heading. */
-.text-gradient mark {
+accent word pops at least as much as the rest of the heading.
+
+This shimmer has to live on an inner .mark-text span, not on <mark>
+itself. A background-image always paints at the bottom of an
+element's own stacking order — below its own negative z-index
+children — so putting it directly on <mark> made the underline bar
+(::before, z-index:-1) paint on top of the gradient letters instead
+of behind them. The inner span is genuine later content, so it
+paints after (in front of) the bar, restoring the correct order. */
+.text-gradient mark .mark-text {
 	background-image: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--tertiary-color), var(--primary-color));
 	background-size: 300% auto;
 	background-position: 0% 50%;
