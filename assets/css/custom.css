@@ -643,3 +643,135 @@ covers the pieces the old jQuery form-sending code used to toggle
 }
 
 /* #endregion Contact form */
+
+/* #region Reduced motion */
+
+/*
+For visitors who've set "reduce motion" at the OS level (Settings >
+Accessibility on Mac/iOS/Windows/Android) — collapses every CSS
+animation/transition on the page to effectively instant, rather than
+turning off individual effects one by one. Elements still reach
+their normal end state (hover states, scroll-reveal, nav toggle,
+etc. all still work), they just don't animate getting there.
+*/
+@media (prefers-reduced-motion: reduce) {
+
+	*, *::before, *::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	/* The custom cursor and the floating hero bubbles are
+	continuous, decorative motion with no functional purpose —
+	the safety net above stops their CSS keyframes, but the
+	cursor's position is also driven every frame straight from
+	JS (main.js checks this same media query and skips that
+	loop), so hide the element outright as a second guarantee. */
+	.cursor-effect {
+		display: none !important;
+	}
+
+	.bubble {
+		display: none;
+	}
+
+	/* Scroll-reveal and the portfolio hover-zoom involve real
+	directional movement (translate/scale), which is exactly the
+	kind of motion this preference is meant to remove — show
+	final state immediately instead of sliding/zooming into it. */
+	[data-aos] {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+
+	.shuffle-item a.item:hover .image-wrapper .image {
+		transform: none;
+	}
+}
+
+/* #endregion Reduced motion */
+
+/* #region Project template */
+
+/*
+Used on portfolio-project.html (the reusable case-study template) —
+a dashed placeholder box for wherever a real project screenshot
+should eventually go, so the template never looks broken before it's
+filled in, and it's obvious at a glance what still needs replacing.
+*/
+
+.image-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	width: 100%;
+	min-height: 260px;
+	border: 2px dashed var(--gray-50-color);
+	border-radius: 1rem;
+	background: linear-gradient(135deg, var(--primary-15-color), var(--secondary-15-color));
+	color: var(--gray-color);
+	text-align: center;
+	padding: 2rem;
+}
+
+.image-placeholder i {
+	font-size: 2rem;
+	color: var(--gray-50-color);
+}
+
+.image-placeholder span {
+	font-size: 0.9rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.image-placeholder.tall {
+	min-height: 420px;
+}
+
+/* Quick-facts pills (Role / Timeline / Tools) under the project title */
+.project-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	justify-content: center;
+	margin-top: 1.5rem;
+}
+
+.project-meta .badge {
+	padding: 0.5rem 1rem;
+}
+
+/* Back-to-portfolio link sitting above the project title */
+.project-back {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1.5rem;
+	font-size: 0.85rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--white-65-color);
+	text-decoration: none;
+}
+
+.project-back:hover {
+	color: var(--white-color);
+}
+
+.project-back i {
+	transform: rotate(180deg);
+	transition: transform 0.3s ease;
+}
+
+.project-back:hover i {
+	transform: rotate(180deg) translateX(4px);
+}
+
+/* #endregion Project template */

@@ -31,6 +31,16 @@ the contact form will show the error state when submitted.
 */
 var FORM_ENDPOINT = 'https://formspree.io/f/xojgkvlk';
 
+/*
+True when the visitor has "reduce motion" set at the OS level.
+custom.css handles the CSS-driven animations/transitions for this;
+the magnetic button follow and the custom cursor are both driven by
+JS on every mousemove rather than a CSS transition, so they need
+their own check here to actually stop moving rather than just
+animating faster.
+*/
+var REDUCED_MOTION = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.addEventListener('DOMContentLoaded', function () {
 
 	/* 1. Mobile nav toggle ------------------------------------------------ */
@@ -178,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	/* 7. Magnetic button effect -------------------------------------------------- */
 
+	if (!REDUCED_MOTION) {
 	document.querySelectorAll('.magnetic-effect').forEach(function (el) {
 		el.addEventListener('mousemove', function (e) {
 			var rect = el.getBoundingClientRect();
@@ -190,12 +201,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			el.style.transform = 'translate(0, 0)';
 		});
 	});
+	}
 
 	/* 8. Custom cursor ------------------------------------------------------------ */
 
 	var cursor = document.querySelector('.cursor-effect');
 
-	if (cursor && matchMedia('(any-pointer: fine)').matches) {
+	if (cursor && !REDUCED_MOTION && matchMedia('(any-pointer: fine)').matches) {
 		var cx = 0, cy = 0, tx = 0, ty = 0;
 		var shown = false;
 
