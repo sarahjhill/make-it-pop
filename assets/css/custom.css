@@ -13,6 +13,54 @@ file only adds what those no longer cover.
 
 ----------------------------------------------*/
 
+/* #region Heading gradient (Firefox fallback for the theme's own .text-gradient)
+
+main.css/core.css already ship a .text-gradient + .scheme-1/2/3 utility
+that fills text with a two-tone brand gradient (used on the About,
+Portfolio, and stat-counter headings). It only sets the WebKit-specific
+-webkit-text-fill-color, so non-WebKit browsers fall back to a solid
+color instead of the clipped gradient. This adds the standard property
+too, with !important since several ancestor wrappers (.basic-intro,
+.card-body, etc.) set their own higher-specificity `color`. */
+
+.text-gradient,
+.text-gradient > * {
+	color: transparent !important;
+}
+
+/* The accent word inside a heading (e.g. <mark>passion</mark>,
+<mark>Pop</mark>) sits one level deeper than .text-gradient > *
+reaches, so it was inheriting "transparent" without inheriting the
+gradient background needed to fill it back in — making the word
+disappear. Rather than just giving it back a flat color, give it the
+same shifting brand-color shimmer as the nav logo text, so the
+accent word pops at least as much as the rest of the heading. */
+.text-gradient mark {
+	background-image: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--tertiary-color), var(--primary-color));
+	background-size: 300% auto;
+	background-position: 0% 50%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent !important;
+	animation: brand-gradient-shift 5s linear infinite;
+}
+
+/* Give each accent word's underline a different hue than its own
+text, instead of matching (the underline's color rides on the same
+--color variable as the text by default). Picked the opposite end of
+that heading's gradient so text + underline read as two deliberate
+brand colors rather than one flat color repeated twice. */
+.text-gradient mark.primary-50.animated-underline::before {
+	background-color: var(--tertiary-color);
+}
+
+.text-gradient mark.tertiary.animated-underline::before {
+	background-color: var(--primary-color);
+}
+
+/* #endregion Heading gradient */
+
 /* #region Nav */
 
 .mip-header {
@@ -49,6 +97,59 @@ file only adds what those no longer cover.
 .mip-header .navbar-brand .logo {
 	height: 34px;
 	width: auto;
+}
+
+.navbar-brand-text {
+	display: flex;
+	flex-direction: column;
+	margin-left: 0.85rem;
+	line-height: 1.1;
+}
+
+.navbar-brand .brand-tag {
+	font-family: 'Courier New', ui-monospace, monospace;
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	color: var(--white-65-color);
+}
+
+.navbar-brand .brand-name {
+	margin-top: 2px;
+	font-family: var(--secondary-font);
+	font-size: 1.25rem;
+	font-weight: 800;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+	background-image: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--tertiary-color), var(--primary-color));
+	background-size: 300% auto;
+	background-position: 0% 50%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	animation: brand-gradient-shift 5s linear infinite;
+	transition: filter 0.3s ease;
+}
+
+.navbar-brand:hover .brand-name {
+	filter: brightness(1.25) drop-shadow(0 0 10px var(--tertiary-50-color));
+}
+
+@keyframes brand-gradient-shift {
+	0% { background-position: 0% 50%; }
+	100% { background-position: 300% 50%; }
+}
+
+@media (max-width: 420px) {
+
+	.navbar-brand .brand-tag {
+		display: none;
+	}
+
+	.navbar-brand .brand-name {
+		font-size: 1rem;
+	}
 }
 
 .mip-header .navbar-toggler {
@@ -285,6 +386,8 @@ heights. Cropping each tile to a consistent box keeps the grid
 tidy and stops any one image from towering over the page. */
 
 .shuffle-item .image-wrapper {
+	position: relative;
+	overflow: hidden;
 	aspect-ratio: 4 / 3;
 }
 
@@ -293,16 +396,103 @@ tidy and stops any one image from towering over the page. */
 	height: 100%;
 	object-fit: cover;
 	object-position: top center;
+	transition: transform 0.6s cubic-bezier(0.2, 1, 0.2, 1), filter 0.6s ease;
+}
+
+/* Hover trick: the image zooms in and desaturates slightly behind a
+brand-gradient wash, while a "view" icon pops in at the center with
+a little overshoot. All driven off hovering the tile link so the
+whole card is the hit area, not just the pixels under the cursor. */
+
+.shuffle-item .image-wrapper::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background-image: linear-gradient(135deg, var(--secondary-75-color), var(--tertiary-75-color));
+	opacity: 0;
+	transition: opacity 0.45s ease;
+}
+
+.shuffle-item a.item:hover .image-wrapper .image {
+	transform: scale(1.12) rotate(0.5deg);
+	filter: saturate(1.15);
+}
+
+.shuffle-item a.item:hover .image-wrapper::before {
+	opacity: 0.6;
+}
+
+.hover-reveal {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background-color: var(--white-color);
+	color: var(--black-color);
+	font-size: 1.1rem;
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0.4);
+	transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+	pointer-events: none;
+}
+
+.shuffle-item a.item:hover .hover-reveal {
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
 }
 
 /* #endregion Portfolio filter */
 
 /* #region Closing CTA gradient (replaces missing video asset) */
 
+/*
+.content-wrapper is absolutely positioned (out of normal flow), so
+it never grows the section to fit itself — it just overflows past
+the bottom of whatever height the gradient background happens to
+be. That was fine for one short button, but the contact form is much
+taller. Flip it: let .content-wrapper sit in normal flow (so the
+section is exactly as tall as the form needs), and make the
+gradient + dark overlay absolutely fill whatever height that turns
+out to be, instead of the reverse.
+*/
+
+#say-hello .banner {
+	display: block;
+	height: auto;
+	min-height: 60vh;
+}
+
+#say-hello .content-wrapper {
+	position: relative;
+	padding: 5rem 1.5rem;
+}
+
+#say-hello .image-wrapper {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+}
+
+/* main.css's own .has-overlay .overlay uses height:100%, which is
+unreliable against a parent whose height is auto/content-driven —
+inset:0 ties it to the parent's actual box no matter how that
+height was determined. */
+#say-hello .overlay {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+}
+
 .gradient-panel {
 	width: 100%;
 	height: 100%;
-	min-height: 70vh;
 	background: linear-gradient(120deg, var(--secondary-color), var(--tertiary-color), var(--primary-color));
 	background-size: 200% 200%;
 	animation: gradient-shift 12s ease infinite;
@@ -323,3 +513,125 @@ tidy and stops any one image from towering over the page. */
 }
 
 /* #endregion Cursor active state */
+
+/* #region Mail toast */
+
+.mail-toast {
+	position: fixed;
+	left: 50%;
+	bottom: 2rem;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	max-width: calc(100% - 2rem);
+	padding: 0.9rem 1.5rem;
+	border-radius: 999px;
+	background-color: var(--black-color);
+	color: var(--white-color);
+	font-family: var(--primary-font);
+	font-size: 0.95rem;
+	font-weight: 700;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+	opacity: 0;
+	pointer-events: none;
+	transform: translate(-50%, 16px);
+	transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.mail-toast.show {
+	opacity: 1;
+	transform: translate(-50%, 0);
+}
+
+.mail-toast i {
+	color: var(--tertiary-color);
+	font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+
+	.mail-toast {
+		font-size: 0.85rem;
+		text-align: left;
+		padding: 0.8rem 1.1rem;
+	}
+}
+
+/* #endregion Mail toast */
+
+/* #region Contact form */
+
+/*
+main.css already ships .form-area / .form-floating / .form-alert
+styling, but it's tuned for light backgrounds — this section sits on
+the dark, colorful closing CTA, so text/underlines/alerts need
+lighter values than the theme defaults resolve to here. It also
+covers the pieces the old jQuery form-sending code used to toggle
+(.form-alert.show, .sending) now that main.js does that itself.
+*/
+
+.contact-form {
+	max-width: 560px;
+	margin: 2rem auto 0;
+	text-align: left;
+}
+
+.contact-form .contact-submit {
+	margin: 0.5rem 0 0;
+}
+
+.contact-form .form-control {
+	color: var(--white-color);
+	border-bottom-color: var(--white-25-color) !important;
+}
+
+.contact-form .form-control:focus {
+	border-bottom-color: var(--tertiary-color) !important;
+}
+
+.contact-form .form-label {
+	color: var(--white-65-color);
+}
+
+.contact-form .form-control::placeholder {
+	color: transparent;
+}
+
+.contact-form.sending,
+.contact-form .contact-submit:disabled {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.contact-form .form-alert {
+	display: none;
+	text-align: left;
+}
+
+.contact-form .form-alert.show {
+	display: block;
+}
+
+.contact-form .form-alert.success {
+	color: var(--white-color);
+}
+
+.contact-form .form-alert.success::before {
+	color: var(--primary-color);
+}
+
+.contact-form .form-alert.error {
+	color: var(--white-85-color);
+}
+
+.contact-form .form-alert.error::before {
+	color: var(--tertiary-color);
+}
+
+.contact-form .form-alert.error a {
+	color: var(--white-color);
+	text-decoration: underline;
+}
+
+/* #endregion Contact form */

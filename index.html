@@ -38,6 +38,10 @@
           <!-- Brand -->
           <a class="navbar-brand" href="#top">
             <img src="assets/images/logo-white.svg" alt="Make It Pop logo" class="logo" />
+            <span class="navbar-brand-text">
+              <span class="brand-tag">&lt;S.j Design&gt;</span>
+              <span class="brand-name">Make It Pop</span>
+            </span>
           </a>
 
           <!-- Responsive menu toggle -->
@@ -127,7 +131,7 @@
               <div class="holder">
                 <!-- Intro -->
                 <div class="basic-intro">
-                  <h2 class="title black">
+                  <h2 class="title black text-gradient scheme-1">
                     <span class="text-1 text-style-5">Personality </span>
                     <span class="text-2 text-style-6 text-italic">& <mark class="animated-underline primary-50">passion</mark>.</span>
                   </h2>
@@ -163,7 +167,7 @@
                       <span class="label-line gray"></span>
                       <span class="label-text gray">Web Master</span>
                     </span>
-                    <h3 class="title text-style-11 black">Sarah Hill</h3>
+                    <h3 class="title text-style-11 black text-gradient scheme-2">Sarah Hill</h3>
                     <p class="description">
                       I love people, I love my job and you're gonna love me!
                     </p>
@@ -182,25 +186,25 @@
             <div class="row g-5">
               <div class="col-6 col-lg-3">
                 <div class="stat-counter">
-                  <h3 class="title text-style-11 black">Performance</h3>
+                  <h3 class="title text-style-11 black text-gradient scheme-1">Performance</h3>
                   <span class="value" data-value="100" data-symbol="%" data-duration="1500">0%</span>
                 </div>
               </div>
               <div class="col-6 col-lg-3">
                 <div class="stat-counter">
-                  <h3 class="title text-style-11 black">Personality &amp; Umph</h3>
+                  <h3 class="title text-style-11 black text-gradient scheme-1">Personality &amp; Umph</h3>
                   <span class="value" data-value="100" data-symbol="%" data-duration="1500">0%</span>
                 </div>
               </div>
               <div class="col-6 col-lg-3">
                 <div class="stat-counter">
-                  <h3 class="title text-style-11 black">Dedicated Support</h3>
+                  <h3 class="title text-style-11 black text-gradient scheme-1">Dedicated Support</h3>
                   <span class="value" data-value="100" data-symbol="%" data-duration="1500">0%</span>
                 </div>
               </div>
               <div class="col-6 col-lg-3">
                 <div class="stat-counter">
-                  <h3 class="title text-style-11 black">Bullshit</h3>
+                  <h3 class="title text-style-11 black text-gradient scheme-1">Bullshit</h3>
                   <span class="value" data-value="0" data-symbol="%" data-duration="1500">0%</span>
                 </div>
               </div>
@@ -214,7 +218,7 @@
         <div class="container">
           <!-- Intro -->
           <div class="basic-intro mb-35 text-center">
-            <h2 class="title text-style-5 black">
+            <h2 class="title text-style-5 black text-gradient scheme-2">
               <span class="text-2 text-italic">Pages that <mark class="animated-underline tertiary">Pop</mark>.</span>
             </h2>
           </div>
@@ -238,6 +242,7 @@
                     <a href="#" class="item">
                       <div class="image-wrapper image-hover small-shadow rounded">
                         <img src="assets/images/portfolio/bb_mockup.jpg" class="image" alt="Website design mockup" />
+                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
                       </div>
                     </a>
                   </div>
@@ -245,6 +250,7 @@
                     <a href="#" class="item">
                       <div class="image-wrapper image-hover-scroll small-shadow rounded">
                         <img src="assets/images/portfolio/mwd1mu.jpg" class="image" alt="Website design mockup" />
+                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
                       </div>
                     </a>
                   </div>
@@ -252,6 +258,7 @@
                     <a href="#" class="item">
                       <div class="image-wrapper small-shadow rounded">
                         <img src="assets/images/portfolio/portfolio1.png" class="image" alt="Website design mockup" />
+                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
                       </div>
                     </a>
                   </div>
@@ -259,6 +266,7 @@
                     <a href="#" class="item">
                       <div class="image-wrapper image-hover-scroll small-shadow rounded">
                         <img src="assets/images/portfolio/emails.jpg" class="image" alt="HTML email design" />
+                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
                       </div>
                     </a>
                   </div>
@@ -282,11 +290,35 @@
               <div class="description text-style-12 white-50">
                 <p>We hope you like our work and that it can help you in some way.</p>
               </div>
-              <!-- Button -->
-              <a href="mailto:hantaah21@gmail.com" class="button outline white tertiary-hover magnetic-effect">
-                <span class="button-text white white-hover">Say Hello</span>
-                <i class="fa-solid fa-arrow-right button-icon white white-hover"></i>
-              </a>
+
+              <!-- Contact form -->
+              <div class="form-area contact-form">
+                <form id="contact-form" class="form-fields needs-validation" novalidate="novalidate">
+                  <div class="form-row row g-3">
+                    <div class="form-col col-12 col-md-6 form-floating">
+                      <input id="ContactName" class="form-control" name="name" type="text" placeholder="Your name" required="required" />
+                      <label for="ContactName" class="form-label">Your name</label>
+                    </div>
+                    <div class="form-col col-12 col-md-6 form-floating">
+                      <input id="ContactEmail" class="form-control" name="email" type="email" placeholder="Your email" required="required" />
+                      <label for="ContactEmail" class="form-label">Your email</label>
+                    </div>
+                  </div>
+                  <div class="form-row row">
+                    <div class="form-col form-floating">
+                      <textarea id="ContactMessage" class="form-control form-textarea" name="message" placeholder="Your message" required="required"></textarea>
+                      <label for="ContactMessage" class="form-label">Your message</label>
+                    </div>
+                  </div>
+                  <!-- Button -->
+                  <button type="submit" class="button outline white tertiary-hover magnetic-effect contact-submit">
+                    <span class="button-text white white-hover">Say Hello</span>
+                    <i class="fa-solid fa-arrow-right button-icon white white-hover"></i>
+                  </button>
+                  <p class="form-alert success" role="status">Thanks! Your message is on its way — I'll get back to you soon.</p>
+                  <p class="form-alert error" role="status">Something went wrong sending that — mind trying again, or emailing me directly at <a href="mailto:hantaah21@gmail.com">hantaah21@gmail.com</a>?</p>
+                </form>
+              </div>
             </div>
           </div>
           <!-- Animated gradient (in place of a background video) -->
@@ -303,7 +335,7 @@
     <!-- Side Widget -->
     <div class="side-widget to-left invert-color mix-blend-difference d-only-desktop">
       <div class="item">
-        <a href="mailto:hantaah21@gmail.com" class="link black black-hover hover-up">
+        <a href="#contact-form" class="link black black-hover hover-up">
           <span class="widget label-vertical">
             <span class="label-text black"><i class="fa-solid fa-arrow-right-long icon"></i>Send Me Your Brief</span>
           </span>
@@ -320,6 +352,12 @@
           </span>
         </a>
       </div>
+    </div>
+
+    <!-- Toast: shown after clicking a mailto link -->
+    <div id="mail-toast" class="mail-toast" role="status" aria-live="polite">
+      <i class="fa-solid fa-paper-plane"></i>
+      <span>Opening your email app — your message is ready to send!</span>
     </div>
 
     <!-- Cursor -->

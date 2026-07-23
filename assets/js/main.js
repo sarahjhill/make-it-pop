@@ -18,8 +18,18 @@ Content:
 7. Magnetic button effect
 8. Custom cursor
 9. Side widgets on scroll
+10. Mailto confirmation toast
+11. Contact form submission (Formspree)
 
 ----------------------------------------------*/
+
+/*
+Set this to the form endpoint from your Formspree account
+(formspree.io) — create a form there and it gives you a URL like
+"https://formspree.io/f/xxxxxxxx". Until this is a real endpoint,
+the contact form will show the error state when submitted.
+*/
+var FORM_ENDPOINT = 'https://formspree.io/f/xojgkvlk';
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -238,6 +248,82 @@ document.addEventListener('DOMContentLoaded', function () {
 		scrollTopLink.addEventListener('click', function (e) {
 			e.preventDefault();
 			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	}
+
+	/* 10. Mailto confirmation toast ------------------------------------------------- */
+
+	/*
+	A mailto: link only hands off to the visitor's email app — there's
+	no way for the page to know whether they actually hit send
+	afterward. This shows a friendly confirmation the moment they
+	click, so the button still feels responsive, without claiming
+	something the site can't actually verify.
+	*/
+
+	var toast = document.getElementById('mail-toast');
+	var toastTimer = null;
+
+	if (toast) {
+		document.querySelectorAll('a[href^="mailto:"]').forEach(function (link) {
+			link.addEventListener('click', function () {
+				toast.classList.add('show');
+
+				clearTimeout(toastTimer);
+				toastTimer = setTimeout(function () {
+					toast.classList.remove('show');
+				}, 4000);
+			});
+		});
+	}
+
+	/* 11. Contact form submission (Formspree) --------------------------------------- */
+
+	var contactForm = document.getElementById('contact-form');
+
+	if (contactForm) {
+		var submitButton = contactForm.querySelector('.contact-submit');
+		var submitText = submitButton ? submitButton.querySelector('.button-text') : null;
+		var successAlert = contactForm.querySelector('.form-alert.success');
+		var errorAlert = contactForm.querySelector('.form-alert.error');
+
+		contactForm.addEventListener('submit', function (e) {
+			e.preventDefault();
+
+			if (successAlert) successAlert.classList.remove('show');
+			if (errorAlert) errorAlert.classList.remove('show');
+
+			if (!contactForm.checkValidity()) {
+				contactForm.classList.add('was-validated');
+				return;
+			}
+
+			contactForm.classList.add('was-validated', 'sending');
+			if (submitButton) submitButton.disabled = true;
+			if (submitText) submitText.textContent = 'Sending...';
+
+			fetch(FORM_ENDPOINT, {
+				method: 'POST',
+				headers: { 'Accept': 'application/json' },
+				body: new FormData(contactForm)
+			})
+				.then(function (response) {
+					if (response.ok) {
+						if (successAlert) successAlert.classList.add('show');
+						contactForm.reset();
+						contactForm.classList.remove('was-validated');
+					} else {
+						if (errorAlert) errorAlert.classList.add('show');
+					}
+				})
+				.catch(function () {
+					if (errorAlert) errorAlert.classList.add('show');
+				})
+				.finally(function () {
+					contactForm.classList.remove('sending');
+					if (submitButton) submitButton.disabled = false;
+					if (submitText) submitText.textContent = 'Say Hello';
+				});
 		});
 	}
 });
