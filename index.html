@@ -10,7 +10,12 @@
     <title>MAKE IT POP Web Design</title>
     <meta name="description" content="Make It Pop Web Design is a clever, creative way to design websites that outshine the competition — built on solid coding and design practices with a strong strategy focus. Design with intent." />
     <meta name="author" content="Sarah Hill" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <!-- Favicon — SVG for modern browsers, .ico as the fallback -->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/images/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#07beb8" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,22 +141,29 @@
                     <span class="text-2 text-style-6 text-italic">great <mark class="animated-underline primary-50"><span class="mark-text">websites</span></mark>.</span>
                   </h2>
                   <div class="description gray">
-                    <p>Too often they get the opposite. A site that looks dated, takes an age to
-                      load, and quietly turns away the very people it was built to reach.</p>
-                    <p>I build the other kind. Someone lands, understands what you do in seconds,
-                      and takes the next step — donates, volunteers, books, gets in touch.</p>
-                    <p>Most of my work is for <strong>community projects, charities and small
-                      local businesses</strong>. Budgets are real and every pound has to earn its
-                      place, so nothing gets built just because it looks clever.</p>
-                    <p>Every site is written by hand. No bloated page builder, no thirty plugins
-                      waiting to break. It loads fast on an old phone with a poor signal, it works
-                      for people using a screen reader, and it stays yours to own rather than
-                      rented from a platform.</p>
-                    <p>Right now I'm building <strong>Cardiff Community Meals</strong>, live
-                      shortly. Real people, a real deadline, and real consequences if it doesn't
-                      work properly.</p>
-                    <p>And you end up with something you're proud to send people to — which,
-                      when you're asking for someone's trust or their money, is the whole point.</p>
+                    <p class="sjh-lede">Most good causes end up with a website that quietly turns
+                      people away. Yours won't.</p>
+
+                    <ul class="sjh-benefits">
+                      <li><strong>Loads before they lose interest.</strong> Old phone, one bar,
+                        still quick.</li>
+                      <li><strong>Says what you do in seconds.</strong> Then makes the next step
+                        obvious — donate, volunteer, book, get in touch.</li>
+                      <li><strong>Nobody gets locked out.</strong> Screen readers, big text, shaky
+                        hands. Everyone's welcome, not just the young and eagle-eyed.</li>
+                      <li><strong>Built by hand.</strong> No page builder, no thirty plugins
+                        waiting to break on a Sunday night.</li>
+                      <li><strong>Yours to keep.</strong> You own it outright. No monthly rent to a
+                        platform holding your site hostage.</li>
+                      <li><strong>Every pound earns its place.</strong> Small budget? Straight
+                        answers, no padded invoice.</li>
+                    </ul>
+
+                    <p><strong>Cardiff Community Meals</strong> goes live shortly — real people, a
+                      real deadline, real consequences if it doesn't work.</p>
+
+                    <p>You end up with a site you're actually proud to send people to. Which, when
+                      you're asking for someone's trust or their money, is rather the point.</p>
                   </div>
                 </div>
                 <hr class="gray-25">
@@ -243,46 +255,222 @@
                   <button class="nav-link shuffle-button active" data-value="All">All</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link shuffle-button" data-value="Websites">Websites</button>
+                  <button class="nav-link shuffle-button" data-value="Community">Good causes</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link shuffle-button" data-value="Websites">Business sites</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link shuffle-button" data-value="Tools">Tools I built</button>
                 </li>
                 <li class="nav-item">
                   <button class="nav-link shuffle-button" data-value="Emails">HTML Emails</button>
                 </li>
+                <li class="nav-item">
+                  <button class="nav-link shuffle-button" data-value="Learning">Learning</button>
+                </li>
               </ul>
               <div class="row">
                 <div class="gapped-grid shuffle-container">
-                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
-                    <a href="portfolio-project.html" class="item">
-                      <div class="image-wrapper image-hover small-shadow rounded">
-                        <img src="assets/images/portfolio/bb_mockup.webp" class="image" alt="Website design mockup" />
-                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
+
+                  <!-- Many Voices -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Community"]'>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover" data-tone="1" aria-hidden="true">
+                        <span class="sjh-work-initial">MV</span>
                       </div>
-                    </a>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
-                    <a href="portfolio-project.html" class="item">
-                      <div class="image-wrapper image-hover-scroll small-shadow rounded">
-                        <img src="assets/images/portfolio/mwd1mu.webp" class="image" alt="Website design mockup" />
-                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Community</span>
+                        <h3 class="sjh-work-title">Many Voices</h3>
+                        <p class="sjh-work-desc">A student-led inclusion project. Events, mentoring
+                          and real stories, all findable in seconds — so people join instead of
+                          bouncing.</p>
+                        <ul class="sjh-work-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://sarahjhill.github.io/many-voices/" target="_blank" rel="noopener">Visit site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                          <a href="https://github.com/sarahjhill/many-voices" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
                       </div>
-                    </a>
+                    </article>
                   </div>
+
+                  <!-- Muslimah Web Design -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
-                    <a href="portfolio-project.html" class="item">
-                      <div class="image-wrapper small-shadow rounded">
-                        <img src="assets/images/portfolio/portfolio1.webp" class="image" alt="Website design mockup" />
-                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover has-shot">
+                        <img src="assets/images/portfolio/mwd1mu.webp" class="sjh-work-shot" alt="Muslimah Web Design site shown on desktop and mobile" />
                       </div>
-                    </a>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Small business</span>
+                        <h3 class="sjh-work-title">Muslimah Web Design</h3>
+                        <p class="sjh-work-desc">A full service site with real client work and
+                          reviews up front. Built so a first-time visitor trusts it before they
+                          scroll.</p>
+                        <ul class="sjh-work-tags"><li>HTML</li><li>CSS</li><li>Responsive</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://sarahjhill.github.io/muslimah-web-design/" target="_blank" rel="noopener">Visit site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                          <a href="https://github.com/sarahjhill/muslimah-web-design" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
+                      </div>
+                    </article>
                   </div>
+
+                  <!-- Project OS -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Tools"]'>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover" data-tone="2" aria-hidden="true">
+                        <span class="sjh-work-initial">OS</span>
+                      </div>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Web app</span>
+                        <h3 class="sjh-work-title">Project OS</h3>
+                        <p class="sjh-work-desc">The system that runs your project. 12 phases, 69
+                          tasks, and a client login so you can see where things are without having
+                          to chase me.</p>
+                        <ul class="sjh-work-tags"><li>JavaScript</li><li>Supabase</li><li>PWA</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://sarahjhill.github.io/project-os/" target="_blank" rel="noopener">Visit app <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                          <a href="https://github.com/sarahjhill/project-os" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Barakah Baskets -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover has-shot">
+                        <img src="assets/images/portfolio/bb_mockup.webp" class="sjh-work-shot" alt="Barakah Baskets website design mockup" />
+                      </div>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Small business</span>
+                        <h3 class="sjh-work-title">Barakah Baskets</h3>
+                        <p class="sjh-work-desc">A gifting business where ordering feels as
+                          thoughtful as the baskets. Fewer clicks, fewer abandoned baskets.</p>
+                        <ul class="sjh-work-tags"><li>Web design</li><li>E-commerce</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="portfolio-project.html">Case study <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Make It Pop -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover has-shot">
+                        <img src="assets/images/portfolio/portfolio1.webp" class="sjh-work-shot" alt="Make It Pop website design mockup" />
+                      </div>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">This one</span>
+                        <h3 class="sjh-work-title">Make It Pop</h3>
+                        <p class="sjh-work-desc">The site you're on. Hand-written, no page builder,
+                          and it tells you exactly what happens next — no mystery, no hard sell.</p>
+                        <ul class="sjh-work-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://github.com/sarahjhill/make-it-pop" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- HTML Emails -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Emails"]'>
-                    <a href="portfolio-project.html" class="item">
-                      <div class="image-wrapper image-hover-scroll small-shadow rounded">
-                        <img src="assets/images/portfolio/emails.webp" class="image" alt="HTML email design" />
-                        <span class="hover-reveal"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover has-shot">
+                        <img src="assets/images/portfolio/emails.webp" class="sjh-work-shot" alt="HTML email design" />
                       </div>
-                    </a>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Email design</span>
+                        <h3 class="sjh-work-title">HTML Emails</h3>
+                        <p class="sjh-work-desc">Newsletters that survive Outlook, land upright on a
+                          phone, and get read instead of binned.</p>
+                        <ul class="sjh-work-tags"><li>HTML email</li><li>Responsive</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="portfolio-project.html">Case study <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                      </div>
+                    </article>
                   </div>
+
+                  <!-- Pulse Type -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Tools"]'>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover" data-tone="3" aria-hidden="true">
+                        <span class="sjh-work-initial">PT</span>
+                      </div>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Small tool</span>
+                        <h3 class="sjh-work-title">Pulse Type</h3>
+                        <p class="sjh-work-desc">A typing practice workspace. Plain HTML, CSS and
+                          JavaScript — proof that useful things don't need a framework.</p>
+                        <ul class="sjh-work-tags"><li>JavaScript</li><li>No dependencies</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://github.com/sarahjhill/pulse-type" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Love Running -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Learning"]'>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover" data-tone="4" aria-hidden="true">
+                        <span class="sjh-work-initial">LR</span>
+                      </div>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Learning project</span>
+                        <h3 class="sjh-work-title">Love Running</h3>
+                        <p class="sjh-work-desc">A running club site with meet-up times and sign-up.
+                          Where I got the responsive layout habits I still use.</p>
+                        <ul class="sjh-work-tags"><li>HTML</li><li>CSS</li><li>Code Institute</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://sarahjhill.github.io/love-running/" target="_blank" rel="noopener">Visit site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                          <a href="https://github.com/sarahjhill/love-running" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Love Maths -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Learning"]'>
+                    <article class="sjh-work">
+                      <div class="sjh-work-cover" data-tone="5" aria-hidden="true">
+                        <span class="sjh-work-initial">LM</span>
+                      </div>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">Learning project</span>
+                        <h3 class="sjh-work-title">Love Maths</h3>
+                        <p class="sjh-work-desc">An interactive maths quiz. Small, but it's where the
+                          JavaScript clicked into place.</p>
+                        <ul class="sjh-work-tags"><li>JavaScript</li><li>Code Institute</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://sarahjhill.github.io/love-maths/" target="_blank" rel="noopener">Visit site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                          <a href="https://github.com/sarahjhill/love-maths" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Boardwalk Games -->
+                  <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Learning"]'>
+                    <article class="sjh-work is-wip">
+                      <div class="sjh-work-cover" data-tone="6" aria-hidden="true">
+                        <span class="sjh-work-initial">BG</span>
+                      </div>
+                      <div class="sjh-work-body">
+                        <span class="sjh-work-kind">In progress</span>
+                        <h3 class="sjh-work-title">Boardwalk Games</h3>
+                        <p class="sjh-work-desc">A board game café site, still being built. Layout and
+                          game library are in — the words are catching up.</p>
+                        <ul class="sjh-work-tags"><li>HTML</li><li>CSS</li></ul>
+                        <div class="sjh-work-links">
+                          <a href="https://github.com/sarahjhill/boardwalk-games" target="_blank" rel="noopener">Code <i class="fa-brands fa-github"></i></a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -408,6 +596,87 @@
 
     </main>
 
+    <!-- Footer -->
+    <footer class="mip-footer scheme-1">
+      <div class="container">
+        <div class="footer-content">
+          <div class="row g-4">
+
+            <!-- Brand -->
+            <div class="col-12 col-md-5">
+              <div class="footer-item">
+                <a class="footer-brand" href="#top">
+                  <img src="assets/images/logo-sjh-white.svg" alt="SJ Development" class="logo" />
+                  <span class="logo-after-text">Make It Pop</span>
+                </a>
+                <p class="footer-text">
+                  Websites for community projects, charities and small local businesses.
+                  Built by hand, made to last, and yours to own.
+                </p>
+                <p class="footer-text sjh-footer-meta">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Cardiff, Wales
+                </p>
+              </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="col-6 col-md-3">
+              <div class="footer-item">
+                <h2 class="title">Explore</h2>
+                <ul class="nav nav-list flex-column">
+                  <li class="nav-item"><a class="nav-link" href="#about"><span class="text">About</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pages"><span class="text">Portfolio</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="#say-hello"><span class="text">How it works</span></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Get in touch -->
+            <div class="col-6 col-md-4">
+              <div class="footer-item">
+                <h2 class="title">Start something</h2>
+                <ul class="nav nav-list flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link has-icon"
+                       href="https://sarahjhill.github.io/project-os/forms/intake.html">
+                      <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                      <span class="text">Start a project enquiry</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon" href="mailto:hantaah21@gmail.com">
+                      <i class="fa-solid fa-envelope icon" aria-hidden="true"></i>
+                      <span class="text">hantaah21@gmail.com</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon" href="https://github.com/sarahjhill"
+                       target="_blank" rel="noopener">
+                      <i class="fa-brands fa-github icon" aria-hidden="true"></i>
+                      <span class="text">GitHub</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Copyright -->
+          <div class="sjh-footer-bottom">
+            <p class="sjh-copyright">
+              &copy; <span id="sjh-year">2026</span> SJ Development. All rights reserved.
+            </p>
+            <p class="sjh-legal">
+              Make It Pop is a trading name of SJ Development.
+              Design, code and written content on this site are my own work.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
     <!-- Side Widget -->
     <div class="side-widget to-left invert-color mix-blend-difference d-only-desktop">
       <div class="item">
@@ -450,6 +719,14 @@
 
     <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Footer year: keeps the copyright current without editing the file each January -->
+    <script>
+      (function () {
+        var el = document.getElementById('sjh-year');
+        if (el) el.textContent = new Date().getFullYear();
+      })();
+    </script>
 
   </body>
 

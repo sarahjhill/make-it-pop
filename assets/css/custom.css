@@ -1005,3 +1005,267 @@ filled in, and it's obvious at a glance what still needs replacing.
   .sjh-hello .sjh-cta-title { font-size: 22px; }
   .sjh-hello .sjh-cta-points { gap: 8px 16px; font-size: 13px; }
 }
+
+/* ==========================================================================
+   Footer — SJ Development
+   Everything here is scoped under .mip-footer so it cannot leak into the
+   rest of the page. The theme already styles .mip-footer, .footer-brand,
+   .nav-link etc; this only adds the parts it does not cover.
+   ========================================================================== */
+
+.mip-footer .footer-content {
+  padding: 70px 0 30px;
+}
+
+.mip-footer .footer-content .footer-text {
+  max-width: 42ch;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gray-color);
+}
+
+.mip-footer .footer-content .sjh-footer-meta {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.mip-footer .footer-content .sjh-footer-meta i {
+  margin-right: 8px;
+  color: var(--color);
+}
+
+/* Divider + copyright row */
+.sjh-footer-bottom {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 24px;
+}
+
+.sjh-footer-bottom .sjh-copyright,
+.sjh-footer-bottom .sjh-legal {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--gray-color);
+}
+
+.sjh-footer-bottom .sjh-copyright {
+  font-weight: 600;
+  color: var(--color-2);
+}
+
+.sjh-footer-bottom .sjh-legal {
+  max-width: 52ch;
+  opacity: 0.7;
+}
+
+@media (max-width: 767.98px) {
+  .mip-footer .footer-content { padding: 50px 0 26px; }
+  .sjh-footer-bottom { margin-top: 2.25rem; flex-direction: column; }
+}
+
+/* ==========================================================================
+   About — benefit list
+   Scoped to #about so it cannot affect other .description blocks.
+   ========================================================================== */
+
+#about .sjh-lede {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--black-color);
+}
+
+#about .sjh-benefits {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+#about .sjh-benefits li {
+  position: relative;
+  margin-bottom: 0.7rem;
+  padding-left: 1.9rem;
+  line-height: 1.6;
+}
+
+#about .sjh-benefits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--primary-color, #ff5a3c);
+  transform: rotate(45deg);
+}
+
+#about .sjh-benefits strong {
+  color: var(--black-color);
+}
+
+/* ==========================================================================
+   Portfolio — project cards
+   Everything scoped under .sjh-work.
+   ========================================================================== */
+
+.sjh-work {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--black-10-color, rgba(0, 0, 0, 0.1));
+  border-radius: 14px;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.sjh-work:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.13);
+}
+
+/* Cover: either a screenshot, or a coloured tile with initials */
+.sjh-work-cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #1c1c1c;
+}
+
+.sjh-work-shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.sjh-work:hover .sjh-work-shot { transform: scale(1.05); }
+
+.sjh-work-initial {
+  font-family: var(--secondary-font, Poppins, sans-serif);
+  font-size: 2.9rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  opacity: 0.95;
+}
+
+.sjh-work-cover[data-tone="1"] { background: linear-gradient(135deg, #f0654a, #b8321a); }
+.sjh-work-cover[data-tone="2"] { background: linear-gradient(135deg, #3b6fd4, #1d3b7a); }
+.sjh-work-cover[data-tone="3"] { background: linear-gradient(135deg, #1f9e8c, #0d5f54); }
+.sjh-work-cover[data-tone="4"] { background: linear-gradient(135deg, #d4a03b, #8a6413); }
+.sjh-work-cover[data-tone="5"] { background: linear-gradient(135deg, #8e5ad4, #4c2a7c); }
+.sjh-work-cover[data-tone="6"] { background: linear-gradient(135deg, #6b6f76, #33363b); }
+
+/* Body */
+.sjh-work-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 22px 22px;
+}
+
+.sjh-work-kind {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--primary-color, #ff5a3c);
+}
+
+.sjh-work.is-wip .sjh-work-kind { color: #8a8a82; }
+
+.sjh-work-title {
+  margin: 0 0 8px;
+  font-family: var(--secondary-font, Poppins, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--black-color);
+}
+
+.sjh-work-desc {
+  margin: 0 0 14px;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--gray-color, #5c5c57);
+}
+
+.sjh-work-tags {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sjh-work-tags li {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.055);
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #4a4a45;
+}
+
+.sjh-work-links {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.sjh-work-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.87rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--black-color);
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.sjh-work-links a:hover {
+  color: var(--primary-color, #ff5a3c);
+  border-bottom-color: currentColor;
+}
+
+.sjh-work-links a i { font-size: 0.8em; }
+
+/* Filter tabs wrap tidily now there are six of them */
+#pages .horizontal-tab .nav-tabs {
+  flex-wrap: wrap;
+  gap: 4px 0;
+}
+
+@media (max-width: 575.98px) {
+  .sjh-work-body { padding: 16px 18px 18px; }
+  .sjh-work-title { font-size: 1.12rem; }
+  .sjh-work-initial { font-size: 2.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sjh-work,
+  .sjh-work-shot { transition: none; }
+  .sjh-work:hover { transform: none; }
+  .sjh-work:hover .sjh-work-shot { transform: none; }
+}

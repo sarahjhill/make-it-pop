@@ -29,7 +29,12 @@
     <title>[PROJECT NAME] — Make It Pop Web Design</title>
     <meta name="description" content="[One punchy sentence about the project — what it was, who it was for, and why it turned out great.]" />
     <meta name="author" content="Sarah Hill" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <!-- Favicon — SVG for modern browsers, .ico as the fallback -->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/images/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#07beb8" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,9 +61,9 @@
         <div class="container">
           <!-- Brand -->
           <a class="navbar-brand" href="index.html#top">
-            <img src="assets/images/logo-white.svg" alt="Make It Pop logo" class="logo" />
+            <img src="assets/images/logo-sjh-white.svg" alt="SJ Development" class="logo" />
             <span class="navbar-brand-text">
-              <span class="brand-tag">&lt;S.j Design&gt;</span>
+              <span class="brand-tag">&lt;SJ Development&gt;</span>
               <span class="brand-name">Make It Pop</span>
             </span>
           </a>
