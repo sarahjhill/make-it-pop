@@ -775,3 +775,233 @@ filled in, and it's obvious at a glance what still needs replacing.
 }
 
 /* #endregion Project template */
+/* ==========================================================
+   SAY HELLO — process + enquiry call to action
+   Append to the bottom of assets/css/custom.css
+
+   Designed for the dark banner the Say Hello section already
+   uses. Every rule is scoped under .sjh-hello, so no other
+   part of the site can be affected.
+   ========================================================== */
+
+.sjh-hello {
+  --sjh-white: #fff;
+  --sjh-soft: rgba(255, 255, 255, .78);
+  --sjh-faint: rgba(255, 255, 255, .55);
+  --sjh-glass: rgba(255, 255, 255, .09);
+  --sjh-glass-hi: rgba(255, 255, 255, .14);
+  --sjh-edge: rgba(255, 255, 255, .18);
+  --sjh-cyan: #6BE9F5;
+}
+
+.sjh-hello .content-wrapper { padding-top: 70px; padding-bottom: 70px; }
+.sjh-hello .basic-intro.max-w-75 { max-width: 1080px; }
+.sjh-hello .description { margin-bottom: 42px; }
+
+/* ---------- progress tracker ---------- */
+.sjh-hello .sjh-tracker {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 18px;
+  padding: 0 6px;
+}
+.sjh-hello .sjh-track-line {
+  position: absolute;
+  top: 20px;
+  left: 8%;
+  right: 8%;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(to right,
+    var(--sjh-cyan) 0%, var(--sjh-cyan) 16%, rgba(255, 255, 255, .22) 16%);
+}
+.sjh-hello .sjh-track {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.sjh-hello .sjh-track-step {
+  flex: 1;
+  text-align: center;
+  padding: 0 4px;
+}
+.sjh-hello .sjh-dot {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .1);
+  border: 2px solid var(--sjh-edge);
+  color: var(--sjh-faint);
+  font-weight: 700;
+  font-size: 15px;
+  position: relative;
+  z-index: 2;
+}
+.sjh-hello .sjh-track-step.is-here .sjh-dot {
+  background: var(--sjh-white);
+  border-color: var(--sjh-white);
+  color: #22224a;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, .16);
+}
+.sjh-hello .sjh-step-name {
+  display: block;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--sjh-faint);
+}
+.sjh-hello .sjh-track-step.is-here .sjh-step-name {
+  color: var(--sjh-white);
+  font-weight: 700;
+}
+.sjh-hello .sjh-here {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--sjh-white);
+  color: #22224a;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sjh-hello .sjh-track-step.is-here .sjh-dot::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .8);
+    animation: sjhPulse 2.6s ease-out infinite;
+  }
+  @keyframes sjhPulse {
+    0%   { transform: scale(1);   opacity: .6; }
+    70%  { transform: scale(1.5); opacity: 0; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+}
+
+/* ---------- step cards ---------- */
+.sjh-hello .sjh-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 20px;
+  margin: 46px 0 0;
+  text-align: left;
+}
+.sjh-hello .sjh-card {
+  position: relative;
+  background: var(--sjh-glass);
+  border: 1px solid var(--sjh-edge);
+  border-radius: 18px;
+  padding: 28px 22px 22px;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+.sjh-hello .sjh-card:hover {
+  transform: translateY(-4px);
+  background: var(--sjh-glass-hi);
+  border-color: rgba(255, 255, 255, .32);
+}
+.sjh-hello .sjh-card.is-first {
+  background: var(--sjh-glass-hi);
+  border-color: var(--sjh-white);
+}
+.sjh-hello .sjh-num {
+  position: absolute;
+  top: -15px;
+  left: 22px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: var(--sjh-white);
+  color: #22224a;
+  font-weight: 700;
+  font-size: 15px;
+}
+.sjh-hello .sjh-card-title {
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 8px 0 9px;
+  color: var(--sjh-white);
+}
+.sjh-hello .sjh-card-body {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--sjh-soft);
+  margin-bottom: 13px;
+}
+.sjh-hello .sjh-card-need {
+  font-size: 13px;
+  color: var(--sjh-white);
+  background: rgba(0, 0, 0, .22);
+  border-radius: 10px;
+  padding: 8px 11px;
+  margin: 0;
+}
+.sjh-hello .sjh-card-need strong { color: var(--sjh-cyan); }
+
+/* ---------- call to action ---------- */
+.sjh-hello .sjh-cta {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+}
+.sjh-hello .sjh-cta-title {
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--sjh-white);
+  margin: 0 0 10px;
+}
+.sjh-hello .sjh-cta-sub {
+  max-width: 540px;
+  margin: 0 auto 26px;
+  color: var(--sjh-soft);
+  font-size: 16px;
+}
+.sjh-hello .sjh-cta-points {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  font-size: 14px;
+  color: var(--sjh-soft);
+}
+.sjh-hello .sjh-cta-points i { margin-right: 7px; opacity: .75; }
+.sjh-hello .sjh-cta-alt {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--sjh-faint);
+}
+.sjh-hello .sjh-cta-alt a {
+  color: var(--sjh-white);
+  text-decoration: underline;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 991px) {
+  .sjh-hello .sjh-steps { grid-template-columns: repeat(2, 1fr); }
+  .sjh-hello .sjh-track-line { display: none; }
+  .sjh-hello .sjh-track { flex-wrap: wrap; gap: 20px 0; }
+  .sjh-hello .sjh-track-step { flex: 0 0 33.333%; }
+}
+@media (max-width: 640px) {
+  .sjh-hello .sjh-steps { grid-template-columns: 1fr; gap: 26px; }
+  .sjh-hello .sjh-track-step { flex: 0 0 50%; }
+  .sjh-hello .sjh-dot { width: 36px; height: 36px; font-size: 13px; }
+  .sjh-hello .sjh-step-name { font-size: 11.5px; }
+  .sjh-hello .content-wrapper { padding-top: 50px; padding-bottom: 50px; }
+  .sjh-hello .sjh-cta-title { font-size: 22px; }
+  .sjh-hello .sjh-cta-points { gap: 8px 16px; font-size: 13px; }
+}
