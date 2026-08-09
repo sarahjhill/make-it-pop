@@ -331,13 +331,36 @@ brand colors rather than one flat color repeated twice. */
 	justify-content: center;
 	min-width: 88px;
 	padding: 0.5rem 1rem;
-	background-color: var(--black-color);
+	/* Brand gradient rather than flat black, drifting slowly so the row has
+	   some life in it. Each column is offset so they never move in lockstep. */
+	background-color: var(--secondary-color);
+	background-image: linear-gradient(120deg,
+		var(--primary-color), var(--secondary-color),
+		var(--tertiary-color), var(--primary-color));
+	background-size: 300% auto;
+	background-position: 0% 50%;
+	animation: sjh-stat-drift 9s linear infinite;
 	color: var(--white-color);
 	font-family: var(--secondary-font);
 	font-size: 1.75rem;
 	font-weight: 800;
 	border-radius: 999px;
+	/* Pull the number away from its label — they were almost touching. */
+	margin-top: 1rem;
 	margin-bottom: 0.75rem;
+	box-shadow: 0 6px 18px rgba(105, 23, 208, 0.22);
+}
+
+@keyframes sjh-stat-drift {
+	to { background-position: 300% 50%; }
+}
+
+.col-6:nth-child(2) .stat-counter .value { animation-delay: -2.25s; }
+.col-6:nth-child(3) .stat-counter .value { animation-delay: -4.5s; }
+.col-6:nth-child(4) .stat-counter .value { animation-delay: -6.75s; }
+
+@media (prefers-reduced-motion: reduce) {
+	.stat-counter .value { animation: none; background-position: 25% 50%; }
 }
 
 .stat-counter .title {
@@ -1098,9 +1121,15 @@ filled in, and it's obvious at a glance what still needs replacing.
   margin-bottom: 0;
 }
 
+/* The theme positions .icon absolutely with `left:0` and NO `top`, which is
+   deliberate: with top:auto the icon keeps its static position, so each one
+   stays on its own line. Setting `top` here resolved it against the list box
+   instead and stacked all six ticks onto the first item. Nudge with margin,
+   which leaves the static position intact. */
 #about .sjh-benefits .icon {
   font-size: 1.05rem;
-  top: 0.15em;
+  top: auto;            /* explicit: a cached older sheet may still set one */
+  margin-top: 0.12em;
 }
 
 #about .sjh-benefits strong {
@@ -1202,13 +1231,22 @@ filled in, and it's obvious at a glance what still needs replacing.
   color: var(--gray-color, #5c5c57);
 }
 
+/* Descriptions differ in length, so without this the tag row and the links
+   row landed at a different height on every card and the grid looked ragged.
+   Letting the description absorb the slack aligns them across the row. */
+.sjh-work-desc {
+  flex: 1 1 auto;
+}
+
 .sjh-work-tags {
   margin: 0 0 16px;
   padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 6px;
+  min-height: 26px;
 }
 
 .sjh-work-tags li {
