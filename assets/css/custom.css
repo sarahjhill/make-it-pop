@@ -1244,6 +1244,10 @@ filled in, and it's obvious at a glance what still needs replacing.
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  /* align-items defaults to `stretch`, which inflated any tag sitting on a
+     wrapped line to the full line height — measured 38px against 22px for the
+     rest, which is what made the rows look ragged. */
+  align-items: flex-start;
   align-content: flex-start;
   gap: 6px;
   min-height: 26px;
@@ -1325,4 +1329,47 @@ filled in, and it's obvious at a glance what still needs replacing.
 
 .sjh-stack-title .basic-intro .title {
   line-height: 1.05;
+}
+
+/* ==========================================================================
+   Footer link visibility
+
+   The theme paints .nav-link .text with a split gradient and sets
+   -webkit-text-fill-color:transparent so the colour can slide on hover.
+   That gradient is built from var(--color), which is only set by the theme's
+   colour utility classes. Our footer links carry no such class, so --color
+   resolved to nothing, the gradient became invalid, background-image computed
+   to `none`, and the labels rendered as transparent text on no background —
+   invisible.
+
+   Setting --color restores the intended effect. The explicit fill is a belt
+   and braces fallback so the text can never vanish again, gradient or not.
+   ========================================================================== */
+.mip-footer .footer-content .nav-link {
+  --color: var(--white-color);
+}
+
+.mip-footer .footer-content .nav-link .text {
+  -webkit-text-fill-color: var(--gray-color);
+  color: var(--gray-color);
+}
+
+.mip-footer .footer-content .nav-link:hover .text,
+.mip-footer .footer-content .nav-link:focus-visible .text {
+  -webkit-text-fill-color: var(--white-color);
+  color: var(--white-color);
+}
+
+/* ==========================================================================
+   Card tags
+
+   The <li> stayed display:list-item inside the flex row, so the pills sized
+   themselves inconsistently from card to card. Making each one an inline-flex
+   box gives every tag the same height and vertical centring.
+   ========================================================================== */
+.sjh-work-tags li {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1.4;
 }
