@@ -1269,3 +1269,26 @@ filled in, and it's obvious at a glance what still needs replacing.
   .sjh-work:hover { transform: none; }
   .sjh-work:hover .sjh-work-shot { transform: none; }
 }
+
+/* ==========================================================================
+   Case-study hero — stack the two halves of the title
+
+   The heading was already centred to the pixel (measured: ink centre 800,
+   container centre 800). What made it LOOK shoved right is the theme's
+   outline effect: .text-1 is hollow and .text-2 is solid, so on a single
+   line all the visual weight lands on the right-hand word and the eye
+   reads that as the centre.
+
+   Stacking the halves is how the theme uses this effect everywhere it
+   already looks right — and it stops a long project name running the full
+   width of the screen. Opt-in via .sjh-stack-title so it only affects the
+   heroes we've chosen, never every #top on the site.
+   ========================================================================== */
+.sjh-stack-title .basic-intro .title .text-1,
+.sjh-stack-title .basic-intro .title .text-2 {
+  display: block;
+}
+
+.sjh-stack-title .basic-intro .title {
+  line-height: 1.05;
+}
