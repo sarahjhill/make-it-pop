@@ -1082,29 +1082,25 @@ filled in, and it's obvious at a glance what still needs replacing.
   color: var(--black-color);
 }
 
+/* Uses the theme's own .icon-list so the ticks are identical to the ones on
+   the case-study pages — same glyph, same tertiary colour, same offset.
+   Only spacing and the bold lead-in are set here. */
 #about .sjh-benefits {
   margin: 0 0 1.5rem;
-  padding: 0;
-  list-style: none;
 }
 
-#about .sjh-benefits li {
-  position: relative;
-  margin-bottom: 0.7rem;
-  padding-left: 1.9rem;
+#about .sjh-benefits .item {
+  margin-bottom: 0.85rem;
   line-height: 1.6;
 }
 
-#about .sjh-benefits li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-  background: var(--primary-color, #ff5a3c);
-  transform: rotate(45deg);
+#about .sjh-benefits .item:last-child {
+  margin-bottom: 0;
+}
+
+#about .sjh-benefits .icon {
+  font-size: 1.05rem;
+  top: 0.15em;
 }
 
 #about .sjh-benefits strong {
