@@ -1502,3 +1502,192 @@ filled in, and it's obvious at a glance what still needs replacing.
   .sjh-work-cover.is-live .sjh-work-mock { opacity: 1; transform: none; }
   .sjh-work-cover[data-live]::after { display: none; }
 }
+
+/* ==========================================================================
+   What I do — skill cards and client quotes
+   ========================================================================== */
+
+/* Five cards, three then two. The two on the last row are nudged to the
+   middle rather than left hanging at the left edge: a six-column grid where
+   every card spans two, and cards 4 and 5 start one column in. */
+.sjh-skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 576px) {
+  .sjh-skills { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 992px) {
+  .sjh-skills { grid-template-columns: repeat(6, 1fr); }
+  .sjh-skill { grid-column: span 2; }
+  .sjh-skill:nth-child(4) { grid-column: 2 / span 2; }
+  .sjh-skill:nth-child(5) { grid-column: 4 / span 2; }
+}
+
+.sjh-skill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 30px 28px 26px;
+  border: 1px solid var(--gray-25-color);
+  border-radius: 14px;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* The gradient hairline along the top only appears on hover, so the resting
+   state stays quiet and the row does not look like five lit-up buttons. */
+.sjh-skill::before {
+  content: "";
+  position: absolute;
+  inset: -1px -1px auto;
+  height: 3px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(to right, var(--primary-color), var(--tertiary-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sjh-skill:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+.sjh-skill:hover::before { opacity: 1; }
+
+.sjh-skill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  background: var(--gray-10-color);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.sjh-skill:hover .sjh-skill-icon {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), var(--tertiary-color));
+}
+
+.sjh-skill-title {
+  margin: 0 0 10px;
+  font-family: var(--secondary-font);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--black-color);
+}
+
+.sjh-skill-body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--gray-color);
+}
+
+/* Pushes the payoff line to the bottom so it sits on the same baseline across
+   the row, however long the paragraph above it happens to run. */
+.sjh-skill-win {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--gray-25-color);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--black-color);
+  margin-top: auto;
+}
+
+.sjh-skill-win strong { color: var(--primary-color); }
+
+/* ---------- client quotes ---------- */
+
+.sjh-quotes { margin-top: 46px; }
+
+.sjh-quotes-lead {
+  margin: 0 0 22px;
+  font-family: var(--secondary-font);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--black-color);
+}
+
+.sjh-quote-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .sjh-quote-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+.sjh-quote-list > li { margin: 0; }
+
+.sjh-quote {
+  height: 100%;
+  margin: 0;
+  padding: 26px 26px 22px;
+  border-radius: 14px;
+  background: var(--gray-10-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* An open quote mark, sized down and set in the heading face. Decorative, so
+   it is a pseudo-element and never reaches a screen reader. */
+.sjh-quote::before {
+  content: "\201C";
+  display: block;
+  margin-bottom: -14px;
+  font-family: var(--secondary-font);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--primary-color);
+}
+
+.sjh-quote blockquote { margin: 0; }
+
+.sjh-quote blockquote p {
+  margin: 0;
+  font-size: 0.98rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--black-color);
+}
+
+.sjh-quote figcaption {
+  margin-top: auto;
+  padding-top: 16px;
+  font-family: var(--secondary-font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--black-color);
+}
+
+.sjh-quote figcaption span {
+  display: block;
+  font-weight: 400;
+  color: var(--gray-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sjh-skill,
+  .sjh-skill:hover { transform: none; }
+}

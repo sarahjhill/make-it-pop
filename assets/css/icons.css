@@ -3,8 +3,8 @@
 [Icons]
 
 A subset of Font Awesome Free 6 containing only the
-18 icons this site actually uses. Replaces the full
-99KB stylesheet and 924KB of font files with 3KB.
+19 icons this site actually uses. Replaces the full
+99KB stylesheet and 924KB of font files with 4KB.
 
 Font Awesome Free is by Fonticons, Inc.
   Icons : CC BY 4.0  — attribution required, see
@@ -68,10 +68,11 @@ artwork is unchanged; only unused glyphs are removed.
 .fa-clock::before { content: "\f017"; }
 .fa-code::before { content: "\f121"; }
 .fa-envelope::before { content: "\f0e0"; }
-.fa-file-lines::before { content: "\f15c"; }
-.fa-image::before { content: "\f03e"; }
+.fa-heart::before { content: "\f004"; }
+.fa-list-check::before { content: "\f0ae"; }
 .fa-location-dot::before { content: "\f3c5"; }
 .fa-lock-open::before { content: "\f3c1"; }
+.fa-mobile-screen-button::before { content: "\f3cd"; }
 .fa-paper-plane::before { content: "\f1d8"; }
 .fa-pen-ruler::before { content: "\f5ae"; }
 .fa-reply::before { content: "\f3e5"; }

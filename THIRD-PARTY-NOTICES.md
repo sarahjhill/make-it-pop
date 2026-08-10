@@ -63,14 +63,15 @@ Split licence:
 The CC BY 4.0 terms on the icons are why this attribution is not optional.
 
 **What has been changed:** rather than shipping the full library, the two
-font files here are subsets containing only the 18 icons this site uses,
+font files here are subsets containing only the 19 icons this site uses,
 generated with fontTools. The artwork is unaltered; unused glyphs are simply
 removed. The OFL expressly permits subsetting, and the fonts remain under it.
-This took the icon payload from roughly 1,020 KB to 5 KB.
+This took the icon payload from roughly 1,020 KB to 4 KB.
 
 Icons in use: arrow-right, arrow-right-long, arrow-up-right-from-square,
-briefcase, check, clock, code, envelope, file-lines, github, image, linkedin,
-location-dot, lock-open, paper-plane, pen-ruler, reply, user.
+briefcase, check, clock, code, envelope, github, heart, linkedin, list-check,
+location-dot, lock-open, mobile-screen-button, paper-plane, pen-ruler, reply,
+user.
 
 ---
 
