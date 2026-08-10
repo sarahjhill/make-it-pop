@@ -1380,4 +1380,13 @@ filled in, and it's obvious at a glance what still needs replacing.
   align-items: center;
   white-space: nowrap;
   line-height: 1.4;
+  /* THE actual cause of the staggered pills. core.css sets `ul > li {margin:
+     8px 0}` and then zeroes it for :first-child and :last-child — so in a row
+     of three, the MIDDLE pill kept an 8px top margin and sat 8px lower than
+     its neighbours. Measured: tops 333.49 / 341.49 / 333.49.
+
+     Everything I changed before this (align-items, min-height, flex on the
+     description) was aligning the tag BLOCK across cards, which was a real
+     but different problem. This is the one that was visible. */
+  margin: 0;
 }
