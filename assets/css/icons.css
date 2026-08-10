@@ -23,7 +23,7 @@ artwork is unchanged; only unused glyphs are removed.
 	src: url('../fonts/icons/sj-icons-solid.woff') format('woff');
 	font-weight: 900;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }
 
 @font-face {
@@ -31,7 +31,7 @@ artwork is unchanged; only unused glyphs are removed.
 	src: url('../fonts/icons/sj-icons-brands.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }
 
 /* Base — matches Font Awesome's own so existing markup keeps working */

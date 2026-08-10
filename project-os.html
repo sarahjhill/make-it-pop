@@ -38,17 +38,28 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Fonts load without blocking the first paint. The stylesheet is fetched
+         as a non-applying "print" sheet, then switched to "all" once it has
+         arrived; the <noscript> copy covers scripting being off. display=swap
+         means text shows immediately in a fallback face rather than waiting. -->
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <noscript>
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10d" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10e" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/core.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10d" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10e" />
 
   </head>
 
@@ -147,7 +158,7 @@
         <div class="container">
           <a href="https://sarahjhill.github.io/project-os/" target="_blank" rel="noopener"
              class="image-wrapper rounded small-shadow d-block" data-aos>
-            <img src="assets/images/portfolio/projectos-responsive.webp" class="image"
+            <img loading="lazy" decoding="async" width="640" height="387" src="assets/images/portfolio/projectos-responsive.webp" class="image"
                  alt="The SJ Development Process landing page shown on desktop, laptop, tablet and phone" />
           </a>
         </div>
@@ -178,7 +189,7 @@
             </div>
             <div class="col-12 col-md-6">
               <div class="image-wrapper rounded small-shadow" data-aos data-aos-delay="100">
-                <img src="assets/images/portfolio/projectos-dashboard.webp" class="image"
+                <img loading="lazy" decoding="async" width="640" height="328" src="assets/images/portfolio/projectos-dashboard.webp" class="image"
                      alt="The dashboard showing overall progress and a progress bar for each of the twelve phases" />
               </div>
             </div>
@@ -198,7 +209,7 @@
           <div class="row g-4">
             <div class="col-12 col-md-6">
               <div class="image-wrapper rounded small-shadow" data-aos>
-                <img src="assets/images/portfolio/projectos-responsive.webp" class="image"
+                <img loading="lazy" decoding="async" width="640" height="387" src="assets/images/portfolio/projectos-responsive.webp" class="image"
                      alt="The public landing page across four screen sizes" />
               </div>
             </div>
@@ -283,14 +294,14 @@
           <div class="row g-4">
             <div class="col-12 col-lg-6">
               <div class="image-wrapper rounded small-shadow">
-                <img src="assets/images/portfolio/projectos-dashboard.webp" class="image"
+                <img loading="lazy" decoding="async" width="640" height="328" src="assets/images/portfolio/projectos-dashboard.webp" class="image"
                      alt="Dashboard: percentage complete, tasks in progress, story points and effort remaining, with a bar per phase" />
               </div>
               <p class="tiny gray mt-2">The dashboard. Everything at a glance, nothing to interpret.</p>
             </div>
             <div class="col-12 col-lg-6">
               <div class="image-wrapper rounded small-shadow">
-                <img src="assets/images/portfolio/projectos-responsive.webp" class="image"
+                <img loading="lazy" decoding="async" width="640" height="387" src="assets/images/portfolio/projectos-responsive.webp" class="image"
                      alt="The landing page on desktop, laptop, tablet and phone" />
               </div>
               <p class="tiny gray mt-2">The public page, on every size of screen.</p>

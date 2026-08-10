@@ -39,17 +39,28 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Fonts load without blocking the first paint. The stylesheet is fetched
+         as a non-applying "print" sheet, then switched to "all" once it has
+         arrived; the <noscript> copy covers scripting being off. display=swap
+         means text shows immediately in a fallback face rather than waiting. -->
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <noscript>
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10d" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10e" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/core.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10d" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10e" />
 
   </head>
 

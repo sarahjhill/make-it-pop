@@ -40,17 +40,28 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Fonts load without blocking the first paint. The stylesheet is fetched
+         as a non-applying "print" sheet, then switched to "all" once it has
+         arrived; the <noscript> copy covers scripting being off. display=swap
+         means text shows immediately in a fallback face rather than waiting. -->
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <noscript>
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10d" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10e" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/core.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10d" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10e" />
 
   </head>
 
@@ -208,7 +219,7 @@
                 <div class="card boxed parent">
                   <!-- Image -->
                   <div class="image-wrapper rounded" data-aos>
-                    <img src="assets/images/me2.webp" alt="Portrait of Sarah Hill" class="image outline white" />
+                    <img width="374" height="666" src="assets/images/me2.webp" alt="Portrait of Sarah Hill" class="image outline white" />
                     <div class="image-overlay primary-15 primary-50-hover"></div>
                   </div>
                   <!-- Box -->
@@ -302,7 +313,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Community"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/many-voices/">
-                        <img src="assets/images/portfolio/many-voices-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Many Voices homepage" />
+                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/many-voices-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Many Voices homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Community</span>
@@ -323,7 +334,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/muslimah-web-design/">
-                        <img src="assets/images/portfolio/muslimah-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Muslimah Web Design homepage" />
+                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/muslimah-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Muslimah Web Design homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Small business</span>
@@ -344,7 +355,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Tools"]'>
                     <article class="sjh-work">
                       <a href="project-os.html" class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/project-os/">
-                        <img src="assets/images/portfolio/projectos-responsive.webp" class="sjh-work-shot sjh-work-mock"
+                        <img loading="lazy" decoding="async" width="640" height="387" src="assets/images/portfolio/projectos-responsive.webp" class="sjh-work-shot sjh-work-mock"
                              alt="SJ Development Process shown on desktop, laptop, tablet and phone" />
                       </a>
                       <div class="sjh-work-body">
@@ -367,7 +378,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/bb_mockup.webp" class="sjh-work-shot sjh-work-mock" alt="Muslim Bookers website shown on desktop and mobile" />
+                        <img loading="lazy" decoding="async" width="640" height="551" src="assets/images/portfolio/bb_mockup.webp" class="sjh-work-shot sjh-work-mock" alt="Muslim Bookers website shown on desktop and mobile" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Travel booking</span>
@@ -387,7 +398,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/make-it-pop/">
-                        <img src="assets/images/portfolio/makeitpop-devices.webp" class="sjh-work-shot sjh-work-mock" alt="Make It Pop shown on desktop, laptop, tablet and phone" />
+                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/makeitpop-devices.webp" class="sjh-work-shot sjh-work-mock" alt="Make It Pop shown on desktop, laptop, tablet and phone" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">This one</span>
@@ -406,7 +417,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Emails"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/emails.webp" class="sjh-work-shot sjh-work-mock" alt="HTML email design" />
+                        <img loading="lazy" decoding="async" width="270" height="339" src="assets/images/portfolio/emails.webp" class="sjh-work-shot sjh-work-mock" alt="HTML email design" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Email design</span>
@@ -425,7 +436,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Tools"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://azizr96.github.io/mission-control/">
-                        <img src="assets/images/portfolio/mission-control-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Mission Control focus timer and mission list" />
+                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/mission-control-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Mission Control focus timer and mission list" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Team build</span>
@@ -446,7 +457,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Learning"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/love-running/">
-                        <img src="assets/images/portfolio/love-running-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Love Running homepage" />
+                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/love-running-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Love Running homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Learning project</span>
@@ -466,7 +477,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Learning"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/love-maths/">
-                        <img src="assets/images/portfolio/love-maths-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Love Maths quiz" />
+                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/love-maths-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Love Maths quiz" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Learning project</span>
