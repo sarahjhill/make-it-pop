@@ -326,12 +326,102 @@
 
     </main>
 
+    <!-- Footer -->
+    <footer class="mip-footer scheme-1">
+      <div class="container">
+        <div class="footer-content">
+          <div class="row g-4">
+
+            <!-- Brand -->
+            <div class="col-12 col-md-5">
+              <div class="footer-item">
+                <a class="footer-brand" href="index.html#top">
+                  <img src="assets/images/logo-sjh-white.svg" alt="SJ Development" class="logo" />
+                  <span class="logo-after-text">Make It Pop</span>
+                </a>
+                <p class="footer-text">
+                  Websites for community projects, charities and small local businesses.
+                  Built by hand, made to last, and yours to own.
+                </p>
+                <p class="footer-text sjh-footer-meta">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Cardiff, Wales
+                </p>
+              </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="col-6 col-md-3">
+              <div class="footer-item">
+                <h2 class="title">Explore</h2>
+                <ul class="nav nav-list flex-column">
+                  <li class="nav-item"><a class="nav-link" href="index.html#about"><span class="text">About</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="index.html#pages"><span class="text">Portfolio</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="index.html#say-hello"><span class="text">How it works</span></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Get in touch -->
+            <div class="col-6 col-md-4">
+              <div class="footer-item">
+                <h2 class="title">Start something</h2>
+                <ul class="nav nav-list flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link has-icon"
+                       href="https://sarahjhill.github.io/project-os/forms/intake.html">
+                      <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                      <span class="text">Start a project enquiry</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon" href="mailto:hantaah21@gmail.com">
+                      <i class="fa-solid fa-envelope icon" aria-hidden="true"></i>
+                      <span class="text">hantaah21@gmail.com</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon"
+                       href="https://www.linkedin.com/in/sarah-hill-software-developer/"
+                       target="_blank" rel="noopener">
+                      <i class="fa-brands fa-linkedin icon" aria-hidden="true"></i>
+                      <span class="text">LinkedIn</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon" href="https://github.com/sarahjhill"
+                       target="_blank" rel="noopener">
+                      <i class="fa-brands fa-github icon" aria-hidden="true"></i>
+                      <span class="text">GitHub</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Copyright -->
+          <div class="sjh-footer-bottom">
+            <p class="sjh-copyright">
+              &copy; <span id="sjh-year">2026</span> SJ Development. All rights reserved.
+            </p>
+            <p class="sjh-legal">
+              Make It Pop is a trading name of SJ Development. Site copy, custom code and
+              branding are my own work and not licensed for reuse.
+              Built with Bootstrap and Font Awesome.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
     <!-- Side Widget -->
     <div class="side-widget to-left invert-color mix-blend-difference d-only-desktop">
       <div class="item">
-        <a href="index.html#contact-form" class="link black black-hover hover-up">
+        <a href="https://sarahjhill.github.io/project-os/forms/intake.html" class="link black black-hover hover-up">
           <span class="widget label-vertical">
-            <span class="label-text black"><i class="fa-solid fa-arrow-right-long icon"></i>Send Me Your Brief</span>
+            <span class="label-text black"><i class="fa-solid fa-arrow-right-long icon"></i>Start My Project Enquiry</span>
           </span>
         </a>
       </div>
@@ -368,6 +458,15 @@
 
     <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Footer year: keeps the copyright current without editing the file each January -->
+    <script>
+      (function () {
+        var el = document.getElementById('sjh-year');
+        if (el) el.textContent = new Date().getFullYear();
+      })();
+    </script>
+
 
   </body>
 
