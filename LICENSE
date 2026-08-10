@@ -33,6 +33,11 @@ separately and is not mine to license to anyone else. Nothing above grants
 you any rights over it, and nothing above takes any rights away from its
 authors.
 
+In particular, theme.css, core.css and main.css are adapted from the
+"Shock" template by Codings, used under a purchased ThemeForest licence.
+That licence covers use on this site; it does not permit redistribution of
+the template source, so the purchased package is kept out of this repository.
+
 See THIRD-PARTY-NOTICES.md for the full list.
 
 
