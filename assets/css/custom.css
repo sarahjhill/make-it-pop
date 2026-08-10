@@ -1250,7 +1250,15 @@ filled in, and it's obvious at a glance what still needs replacing.
   align-items: flex-start;
   align-content: flex-start;
   gap: 6px;
-  min-height: 26px;
+  /* Cards with three tags wrap to two rows; cards with two fit on one. That
+     12px difference was absorbed by the flexible description above, which
+     pushed the tag rows to different heights across the grid. Reserving the
+     two-row height on every card fixes it.
+
+     39px, not 38: the natural two-row block measures 38.35px, so a 38px floor
+     only clamps the one-row cards and leaves a third of a pixel of drift.
+     39 clamps both, and the offsets then match to two decimal places. */
+  min-height: 39px;
 }
 
 .sjh-work-tags li {
