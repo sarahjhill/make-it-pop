@@ -1,34 +1,29 @@
 <!DOCTYPE HTML>
 <html lang="en">
 
-  <!--
-    ============================================================
-    PROJECT CASE-STUDY TEMPLATE — how to reuse this file
-    ============================================================
-    1. Duplicate this file for each real project, e.g.
-       "project-bloom-bakery.html", and keep it in the site root
-       (same folder as index.html) so the shared assets/ paths work.
-    2. Find every [BRACKETED PLACEHOLDER] below and swap in your
-       own project name, copy, and facts. Search for "PLACEHOLDER"
-       to jump between the .image-placeholder blocks that need a
-       real screenshot dropped in (just swap the whole
-       <div class="image-placeholder">...</div> for an
-       <img class="image" src="assets/images/portfolio/your-file.webp" alt="..."> ).
-    3. Once a project page is ready, go back to index.html and
-       point that project's portfolio tile <a href="#"> at this
-       file's new name instead of "#".
-    ============================================================
-  -->
-
   <head>
     <!-- Display -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Identity -->
-    <title>[PROJECT NAME] — Make It Pop Web Design</title>
-    <meta name="description" content="[One punchy sentence about the project — what it was, who it was for, and why it turned out great.]" />
+    <title>Muslim Bookers — Make It Pop Web Design</title>
+    <meta name="description" content="Halal hotels and holidays in one place, with real reviews and honest prices — so nobody has to open six tabs to check they are not overpaying." />
     <meta name="author" content="Sarah Hill" />
+
+    <!-- Social preview — absolute urls only; scrapers ignore relative paths. -->
+    <meta property="og:site_name" content="Make It Pop" />
+    <meta property="og:title" content="Muslim Bookers — a case study" />
+    <meta property="og:description" content="Halal hotels and holidays in one place, with real reviews and honest prices — so nobody has to open six tabs to check they are not overpaying." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sarahjhill.github.io/make-it-pop/portfolio-project.html" />
+    <meta property="og:image" content="https://sarahjhill.github.io/make-it-pop/assets/images/og-make-it-pop.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Muslim Bookers — a case study" />
+    <meta name="twitter:description" content="Halal hotels and holidays in one place, with real reviews and honest prices." />
+    <meta name="twitter:image" content="https://sarahjhill.github.io/make-it-pop/assets/images/og-make-it-pop.jpg" />
     <!-- Favicon — SVG for modern browsers, .ico as the fallback -->
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="assets/images/favicon.ico" sizes="16x16 32x32 48x48" />
@@ -115,25 +110,24 @@
             <!-- Category badge — set to match this project's filter: Websites or Emails -->
             <div>
               <span class="badge outline white">
-                <span class="badge-text white">[Websites / HTML Emails]</span>
+                <span class="badge-text white">Travel booking</span>
               </span>
             </div>
 
             <h1 class="title text-style-3 white">
-              <span class="text-1 text-outline">[PROJECT</span>
-              <span class="text-2 text-italic">NAME <mark class="animated-underline tertiary"><span class="mark-text">Goes Here</span></mark>]</span>
+              <span class="text-1 text-outline">Muslim</span>
+              <span class="text-2 text-italic"><mark class="animated-underline tertiary"><span class="mark-text">Bookers</span></mark></span>
             </h1>
 
             <div class="description text-style-12 white-50">
-              <p>[One sassy, confident line about what this project was and why it slaps. This is the elevator pitch — make it count.]</p>
+              <p>Halal hotels and holidays in one place, with real reviews and honest prices — so nobody has to open six tabs to check they are not overpaying.</p>
             </div>
 
             <!-- Quick facts — delete any row that doesn't apply -->
             <div class="project-meta">
-              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-user"></i>&nbsp; [Client Name]</span></span>
-              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-briefcase"></i>&nbsp; [Your Role]</span></span>
-              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-clock"></i>&nbsp; [Timeline]</span></span>
-              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-code"></i>&nbsp; [Tools Used]</span></span>
+              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-user"></i>&nbsp; Muslim Bookers</span></span>
+              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-briefcase"></i>&nbsp; Web design &amp; build</span></span>
+              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-code"></i>&nbsp; Responsive · Booking · Reviews</span></span>
             </div>
           </div>
         </div>
@@ -158,9 +152,9 @@
       <section class="mip-section pt-1 pb-3">
         <div class="container">
           <!-- PLACEHOLDER: swap for your main project screenshot -->
-          <div class="image-placeholder tall rounded small-shadow" data-aos>
-            <i class="fa-solid fa-image"></i>
-            <span>Drop your hero screenshot here</span>
+          <div class="image-wrapper rounded small-shadow" data-aos>
+            <img src="assets/images/portfolio/bb_mockup.webp" class="image"
+                 alt="The Muslim Bookers site shown on desktop and mobile" />
           </div>
         </div>
       </section>
@@ -176,15 +170,22 @@
                   <span class="text-2 text-style-6 text-italic">Brief.</span>
                 </h2>
                 <div class="description gray">
-                  <p>[What did the client come to you with? What problem were they trying to solve, and what did they actually ask for? Set the scene — a couple of short paragraphs is plenty.]</p>
-                  <p>[Anything tricky about the brief worth calling out? Tight deadline, picky stakeholders, a brand nobody could agree on — this is where the "why this was interesting" lives.]</p>
+                  <p>Booking a halal-friendly holiday usually means having six tabs open. One
+                    site for the hotel, another to check whether it really is halal, a third for
+                    reviews you half trust, and a fourth to work out whether the price is any
+                    good. It is tiring, and it is the reason people give up and book something
+                    they settle for.</p>
+                  <p>The interesting part was trust. A booking site lives or dies on whether
+                    someone believes what it tells them, so reviews and recommendations had to be
+                    front and centre rather than buried three clicks in — and the price had to be
+                    something you could sanity-check without leaving the page.</p>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <div class="image-placeholder rounded small-shadow" data-aos data-aos-delay="100">
-                <i class="fa-solid fa-file-lines"></i>
-                <span>Add a moodboard, wireframe, or brief excerpt</span>
+              <div class="image-wrapper rounded small-shadow" data-aos data-aos-delay="100">
+                <img src="assets/images/portfolio/bb_mockup.webp" class="image"
+                     alt="Muslim Bookers browsing and booking screens" />
               </div>
             </div>
           </div>
@@ -202,9 +203,9 @@
         <div class="container">
           <div class="row g-4">
             <div class="col-12 col-md-6">
-              <div class="image-placeholder rounded small-shadow" data-aos>
-                <i class="fa-solid fa-pen-ruler"></i>
-                <span>Add a process shot: sketches, style tiles, dev preview</span>
+              <div class="image-wrapper rounded small-shadow" data-aos>
+                <img src="assets/images/portfolio/bb_mockup.webp" class="image"
+                     alt="The booking flow across screen sizes" />
               </div>
             </div>
             <div class="col-12 col-md-6 align-v-center">
@@ -214,12 +215,16 @@
                   <span class="text-2 text-style-6 text-italic">Approach.</span>
                 </h2>
                 <div class="description gray mb-35">
-                  <p>[How did you tackle it? What was the strategy, the design direction, the stack? This is your chance to show the thinking, not just the pretty pictures.]</p>
+                  <p>Designed around how people actually browse rather than how a database is
+                    organised. Somebody looking for a family holiday and somebody looking for a
+                    quiet week away want different things from the same page, so the layout leads
+                    with the decision — where, when, how much — and keeps the reassurance close
+                    to it.</p>
                 </div>
                 <ul class="icon-list">
-                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>[A decision you made and why it mattered]</li>
-                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>[A tool, technique, or trick you used]</li>
-                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>[A challenge you solved along the way]</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Reviews and recommendations sit beside the price, not three clicks away</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Built responsive from the phone up — most holiday browsing happens on a sofa</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Comparison made obvious, so nobody needs six tabs to feel confident</li>
                 </ul>
               </div>
             </div>
@@ -227,57 +232,33 @@
         </div>
       </section>
 
-      <!-- The Result -->
+      <!-- What it does -->
       <section class="mip-section pt-6 pb-6">
         <div class="container">
           <div class="basic-intro mb-35 text-center">
             <h2 class="title text-style-5 black text-gradient scheme-3">
-              <span class="text-2 text-italic">The Result.</span>
+              <span class="text-2 text-italic">What it does.</span>
             </h2>
             <div class="description gray">
-              <p>[What happened after launch? Traffic up, bookings up, client thrilled, you name it. Numbers are great here — even estimates.]</p>
+              <p>Four things the site has to get right, because they are the four reasons
+                someone abandons a booking and goes elsewhere.</p>
             </div>
           </div>
 
-          <!-- Result stats — edit the labels/numbers, or delete a column you don't need -->
-          <div class="block-section mb-0">
-            <div class="row g-5">
-              <div class="col-6 col-lg-3">
-                <div class="stat-counter">
-                  <h3 class="title text-style-11 black text-gradient scheme-1">[Metric One]</h3>
-                  <span class="value" data-value="100" data-symbol="%" data-duration="1500">0%</span>
-                </div>
-              </div>
-              <div class="col-6 col-lg-3">
-                <div class="stat-counter">
-                  <h3 class="title text-style-11 black text-gradient scheme-1">[Metric Two]</h3>
-                  <span class="value" data-value="0" data-symbol="" data-duration="1500">0</span>
-                </div>
-              </div>
-              <div class="col-6 col-lg-3">
-                <div class="stat-counter">
-                  <h3 class="title text-style-11 black text-gradient scheme-1">[Metric Three]</h3>
-                  <span class="value" data-value="0" data-symbol="%" data-duration="1500">0%</span>
-                </div>
-              </div>
-              <div class="col-6 col-lg-3">
-                <div class="stat-counter">
-                  <h3 class="title text-style-11 black text-gradient scheme-1">[Metric Four]</h3>
-                  <span class="value" data-value="0" data-symbol="" data-duration="1500">0</span>
-                </div>
-              </div>
+          <div class="row g-4">
+            <div class="col-12 col-md-6">
+              <ul class="icon-list">
+                <li class="item"><i class="icon fa-solid fa-check tertiary"></i><strong>Is it actually halal?</strong> Answered on the page, not buried in a policy document.</li>
+                <li class="item"><i class="icon fa-solid fa-check tertiary"></i><strong>Can I trust the reviews?</strong> Real ones, from people who stayed, kept next to the listing.</li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-6">
+              <ul class="icon-list">
+                <li class="item"><i class="icon fa-solid fa-check tertiary"></i><strong>Am I overpaying?</strong> Comparison built in, so checking takes seconds rather than six tabs.</li>
+                <li class="item"><i class="icon fa-solid fa-check tertiary"></i><strong>Does it work on my phone?</strong> Built from the small screen up, because that is where holidays get browsed.</li>
+              </ul>
             </div>
           </div>
-
-          <!-- Client testimonial — delete this whole <figure> if you don't have one yet -->
-          <figure class="blockquote text-center mt-6" style="max-width: 700px; margin-left: auto; margin-right: auto;">
-            <blockquote class="blockquote-body text-style-11 black">
-              <p>"[Drop a client quote here — even one glowing sentence from an email counts.]"</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              <cite title="Source Title">[Client Name] / [Their Role or Company]</cite>
-            </figcaption>
-          </figure>
         </div>
       </section>
 
@@ -289,23 +270,11 @@
               <span class="text-2 text-italic">More <mark class="animated-underline tertiary">Angles</mark>.</span>
             </h2>
           </div>
-          <div class="gapped-grid shuffle-container">
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="image-placeholder rounded small-shadow">
-                <i class="fa-solid fa-image"></i>
-                <span>Extra shot 1</span>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="image-placeholder rounded small-shadow">
-                <i class="fa-solid fa-image"></i>
-                <span>Extra shot 2</span>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="image-placeholder rounded small-shadow">
-                <i class="fa-solid fa-image"></i>
-                <span>Extra shot 3</span>
+          <div class="row g-4 justify-content-center">
+            <div class="col-12 col-lg-8">
+              <div class="image-wrapper rounded small-shadow">
+                <img src="assets/images/portfolio/bb_mockup.webp" class="image"
+                     alt="Muslim Bookers shown across desktop and mobile" />
               </div>
             </div>
           </div>
