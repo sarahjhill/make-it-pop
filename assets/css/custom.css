@@ -1434,7 +1434,13 @@ filled in, and it's obvious at a glance what still needs replacing.
   transform-origin: top left;
   opacity: 0;
   pointer-events: none;          /* never hijacks the page scroll */
-  transition: opacity .5s ease, transform 7s cubic-bezier(.33,0,.2,1);
+  /* The scale is applied HERE, not on hover. Putting it in the hovered rule
+     meant the 7s transform transition animated the scale as well: the frame
+     appeared at full 1280px size and slowly shrank into the card, which read
+     as a huge zoom. Scale is identical in both states now, so the transition
+     has only the translateY left to animate. */
+  transform: scale(var(--sjh-fit, .25)) translateY(0);
+  transition: opacity .5s ease;
   z-index: 1;
 }
 
@@ -1447,6 +1453,7 @@ filled in, and it's obvious at a glance what still needs replacing.
 .sjh-work-cover.is-live .sjh-work-live {
   opacity: 1;
   transform: scale(var(--sjh-fit, .25)) translateY(var(--sjh-travel, 0px));
+  transition: opacity .5s ease, transform 7s cubic-bezier(.33,0,.2,1);
 }
 
 /* The frame lives inside the wrapper; the WRAPPER is what gets transformed.

@@ -54,14 +54,14 @@
     </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-10e" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-10f" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10f" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-10e" />
-    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-10e" />
-    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-10e" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10e" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-10f" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-10f" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-10f" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10f" />
 
   </head>
 
@@ -783,6 +783,10 @@
 
           var fit = cover.clientWidth / FRAME_W;
           cover.style.setProperty('--sjh-fit', fit);
+          // Force a style flush so the frame is already scaled before the
+          // is-live class reveals it. Without this the first hover can paint
+          // one frame at full size.
+          void cover.offsetWidth;
           // How far the frame may travel: everything below the visible window,
           // expressed in unscaled pixels because translate runs before scale.
           var travel = Math.max(0, FRAME_H - cover.clientHeight / fit);
