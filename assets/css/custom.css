@@ -1177,7 +1177,6 @@ filled in, and it's obvious at a glance what still needs replacing.
   transition: transform 0.5s ease;
 }
 
-.sjh-work:hover .sjh-work-shot { transform: scale(1.05); }
 
 .sjh-work-initial {
   font-family: var(--secondary-font, Poppins, sans-serif);
@@ -1422,8 +1421,7 @@ filled in, and it's obvious at a glance what still needs replacing.
   object-fit: cover;
   object-position: center;
   opacity: 1;
-  transform: scale(1);
-  transition: opacity .5s ease, transform .6s ease;
+  transition: opacity .5s ease;
   z-index: 2;
 }
 
@@ -1444,7 +1442,6 @@ filled in, and it's obvious at a glance what still needs replacing.
    --sjh-travel is how far it may slide before the page ends. */
 .sjh-work-cover.is-live .sjh-work-mock {
   opacity: 0;
-  transform: scale(1.03);
 }
 
 .sjh-work-cover.is-live .sjh-work-live {
