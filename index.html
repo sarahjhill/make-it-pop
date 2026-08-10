@@ -301,8 +301,8 @@
                   <!-- Many Voices -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Community"]'>
                     <article class="sjh-work">
-                      <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/many-voices-live.webp" class="sjh-work-shot" alt="The Many Voices homepage" />
+                      <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/many-voices/">
+                        <img src="assets/images/portfolio/many-voices-live.webp" class="sjh-work-mock" alt="The Many Voices homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Community</span>
@@ -322,8 +322,8 @@
                   <!-- Muslimah Web Design -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
                     <article class="sjh-work">
-                      <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/muslimah-live.webp" class="sjh-work-shot" alt="The Muslimah Web Design homepage" />
+                      <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/muslimah-web-design/">
+                        <img src="assets/images/portfolio/muslimah-live.webp" class="sjh-work-mock" alt="The Muslimah Web Design homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Small business</span>
@@ -343,8 +343,8 @@
                   <!-- Project OS -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Tools"]'>
                     <article class="sjh-work">
-                      <a href="project-os.html" class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/projectos-responsive.webp" class="sjh-work-shot"
+                      <a href="project-os.html" class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/project-os/">
+                        <img src="assets/images/portfolio/projectos-responsive.webp" class="sjh-work-mock"
                              alt="SJ Development Process shown on desktop, laptop, tablet and phone" />
                       </a>
                       <div class="sjh-work-body">
@@ -366,8 +366,8 @@
                   <!-- Muslim Bookers -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
                     <article class="sjh-work">
-                      <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/bb_mockup.webp" class="sjh-work-shot" alt="Muslim Bookers website shown on desktop and mobile" />
+                      <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/make-it-pop/">
+                        <img src="assets/images/portfolio/bb_mockup.webp" class="sjh-work-mock" alt="Muslim Bookers website shown on desktop and mobile" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Travel booking</span>
@@ -386,8 +386,8 @@
                   <!-- Make It Pop -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
                     <article class="sjh-work">
-                      <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/portfolio1.webp" class="sjh-work-shot" alt="Make It Pop website design mockup" />
+                      <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/love-running/">
+                        <img src="assets/images/portfolio/makeitpop-devices.webp" class="sjh-work-mock" alt="Make It Pop shown on desktop, laptop, tablet and phone" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">This one</span>
@@ -405,8 +405,8 @@
                   <!-- HTML Emails -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Emails"]'>
                     <article class="sjh-work">
-                      <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/emails.webp" class="sjh-work-shot" alt="HTML email design" />
+                      <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/love-maths/">
+                        <img src="assets/images/portfolio/emails.webp" class="sjh-work-mock" alt="HTML email design" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Email design</span>
@@ -425,7 +425,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Learning"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/love-running-live.webp" class="sjh-work-shot" alt="The Love Running homepage" />
+                        <img src="assets/images/portfolio/love-running-live.webp" class="sjh-work-mock" alt="The Love Running homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Learning project</span>
@@ -445,7 +445,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Learning"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot">
-                        <img src="assets/images/portfolio/love-maths-live.webp" class="sjh-work-shot" alt="The Love Maths quiz" />
+                        <img src="assets/images/portfolio/love-maths-live.webp" class="sjh-work-mock" alt="The Love Maths quiz" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Learning project</span>
@@ -719,6 +719,69 @@
 
     <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Portfolio covers: load the real site on hover.
+         Nothing loads until you point at a card, only one frame is alive at a
+         time, and the frame never takes the mouse wheel. -->
+    <script>
+      (function () {
+        if (!window.matchMedia('(hover: hover)').matches) return;
+        var FRAME_W = 1280, FRAME_H = 3200, current = null;
+
+        function start(cover) {
+          if (cover.classList.contains('is-live')) return;
+          if (current && current !== cover) stop(current);
+          current = cover;
+
+          var frame = cover.querySelector('.sjh-work-live');
+          if (!frame) {
+            frame = document.createElement('div');
+            frame.className = 'sjh-work-live';
+            var inner = document.createElement('iframe');
+            inner.setAttribute('loading', 'lazy');
+            inner.setAttribute('scrolling', 'no');
+            inner.setAttribute('tabindex', '-1');
+            inner.setAttribute('aria-hidden', 'true');
+            inner.setAttribute('referrerpolicy', 'no-referrer');
+            inner.title = 'Live preview';
+            inner.src = cover.dataset.live;
+            frame.appendChild(inner);
+            cover.appendChild(frame);
+          }
+
+          var fit = cover.clientWidth / FRAME_W;
+          cover.style.setProperty('--sjh-fit', fit);
+          // How far the frame may travel: everything below the visible window,
+          // expressed in unscaled pixels because translate runs before scale.
+          var travel = Math.max(0, FRAME_H - cover.clientHeight / fit);
+          cover.style.setProperty('--sjh-travel', '0px');
+          cover.classList.add('is-live');
+          // Let it paint at the top, then begin the slow scroll.
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              cover.style.setProperty('--sjh-travel', -travel + 'px');
+            });
+          });
+        }
+
+        function stop(cover) {
+          cover.classList.remove('is-live');
+          cover.style.setProperty('--sjh-travel', '0px');
+          if (current === cover) current = null;
+        }
+
+        document.querySelectorAll('.sjh-work-cover[data-live]').forEach(function (cover) {
+          var card = cover.closest('.sjh-work') || cover;
+          card.addEventListener('mouseenter', function () { start(cover); });
+          card.addEventListener('mouseleave', function () { stop(cover); });
+          card.addEventListener('focusin', function () { start(cover); });
+          card.addEventListener('focusout', function () { stop(cover); });
+        });
+      })();
+    </script>
+
+
+
 
     <!-- Footer year: keeps the copyright current without editing the file each January -->
     <script>

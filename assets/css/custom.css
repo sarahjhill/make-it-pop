@@ -1390,3 +1390,111 @@ filled in, and it's obvious at a glance what still needs replacing.
      but different problem. This is the one that was visible. */
   margin: 0;
 }
+
+/* ==========================================================================
+   Portfolio covers — still image at rest, the live site on hover
+
+   amiresponsive does not show pictures: it embeds the real sites in iframes,
+   which is why its screens scroll. Same idea here.
+
+   At rest each card shows a still image, so the page stays light — no site
+   loads until you actually point at one. On hover the real site is injected
+   in an iframe, rendered at desktop width and scaled down to fit the card,
+   then slid slowly upward so you see it from top to bottom.
+
+   The iframe is pointer-events:none on purpose. A live, scrollable frame
+   inside a small card would swallow the mouse wheel and trap the page scroll,
+   which is fine on a dedicated tool like amiresponsive but hostile on a
+   portfolio. The auto-scroll shows the whole page without stealing control.
+   ========================================================================== */
+.sjh-work-cover.has-shot {
+  position: relative;
+  overflow: hidden;
+  background: #11161a;
+}
+
+.sjh-work-mock {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity .5s ease, transform .6s ease;
+  z-index: 2;
+}
+
+.sjh-work-live {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;                 /* render at desktop width... */
+  height: 3200px;                /* ...and tall enough to hold a long page */
+  transform-origin: top left;
+  opacity: 0;
+  pointer-events: none;          /* never hijacks the page scroll */
+  transition: opacity .5s ease, transform 7s cubic-bezier(.33,0,.2,1);
+  z-index: 1;
+}
+
+/* --sjh-fit is the scale that makes 1280px fit the card, set in JS.
+   --sjh-travel is how far it may slide before the page ends. */
+.sjh-work-cover.is-live .sjh-work-mock {
+  opacity: 0;
+  transform: scale(1.03);
+}
+
+.sjh-work-cover.is-live .sjh-work-live {
+  opacity: 1;
+  transform: scale(var(--sjh-fit, .25)) translateY(var(--sjh-travel, 0px));
+}
+
+/* The frame lives inside the wrapper; the WRAPPER is what gets transformed.
+   Some engines refuse a transform applied directly to an <iframe>. */
+.sjh-work-live iframe {
+  width: 1280px;
+  height: 3200px;
+  border: 0;
+  display: block;
+}
+
+/* Small "live" flag so it is obvious the frame is the real site */
+.sjh-work-cover[data-live]::after {
+  content: "Live";
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(17, 22, 26, .72);
+  color: #fff;
+  font-family: var(--secondary-font);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+
+.sjh-work-cover.is-live::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sjh-work-live { transition: opacity .3s ease; }
+  .sjh-work-cover.is-live .sjh-work-live {
+    transform: scale(var(--sjh-fit, .25));
+  }
+}
+
+/* Touch devices get no hover, and eight iframes on a phone would be unkind.
+   The still image is the whole experience there. */
+@media (hover: none) {
+  .sjh-work-live { display: none; }
+  .sjh-work-cover.is-live .sjh-work-mock { opacity: 1; transform: none; }
+  .sjh-work-cover[data-live]::after { display: none; }
+}
