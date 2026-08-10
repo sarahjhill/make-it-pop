@@ -20,6 +20,7 @@ Content:
 9. Side widgets on scroll
 10. Mailto confirmation toast
 11. Contact form submission (Formspree)
+12. Archive lightbox (replaces GLightbox)
 
 ----------------------------------------------*/
 
@@ -289,7 +290,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	/* 11. Contact form submission (Formspree) --------------------------------------- */
+	/* 11. Contact form submission (Formspree)
+12. Archive lightbox (replaces GLightbox) --------------------------------------- */
 
 	var contactForm = document.getElementById('contact-form');
 
@@ -338,4 +340,125 @@ document.addEventListener('DOMContentLoaded', function () {
 				});
 		});
 	}
+
+	/* 12. Archive lightbox (replaces GLightbox) ---------------------------------
+
+	   The theme shipped GLightbox at 49KB. This does the part we need in a
+	   fraction of that: open, step through, close.
+
+	   Navigation follows what is VISIBLE, not the full set — if someone has
+	   filtered down to Logos, "next" should stay inside Logos rather than
+	   wandering off into email campaigns. So the list is rebuilt on open.     */
+
+	var lightbox = document.getElementById('sjh-lightbox');
+
+	if (lightbox) {
+		var lbImage = lightbox.querySelector('.sjh-lb-image');
+		var lbText = lightbox.querySelector('.sjh-lb-text');
+		var lbCount = lightbox.querySelector('.sjh-lb-count');
+		var lbClose = lightbox.querySelector('.sjh-lb-close');
+		var lbPrev = lightbox.querySelector('.sjh-lb-prev');
+		var lbNext = lightbox.querySelector('.sjh-lb-next');
+
+		var lbItems = [];
+		var lbAt = 0;
+		var lbOpener = null;
+
+		function lbVisibleTiles() {
+			return Array.prototype.filter.call(
+				document.querySelectorAll('.sjh-tile'),
+				function (tile) {
+					var holder = tile.closest('.shuffle-item');
+					return !holder || holder.style.display !== 'none';
+				}
+			);
+		}
+
+		function lbShow(index) {
+			if (!lbItems.length) return;
+			/* Wrap around, so the ends are never dead. */
+			lbAt = (index + lbItems.length) % lbItems.length;
+
+			var tile = lbItems[lbAt];
+			var img = tile.querySelector('img');
+			var caption = tile.getAttribute('data-caption') || '';
+
+			lbImage.src = img.getAttribute('src');
+			lbImage.alt = img.getAttribute('alt') || caption;
+			lbText.textContent = caption;
+			lbCount.textContent = (lbAt + 1) + ' of ' + lbItems.length;
+
+			/* Warm the neighbours so stepping through does not flash white. */
+			[lbAt - 1, lbAt + 1].forEach(function (i) {
+				var n = lbItems[(i + lbItems.length) % lbItems.length];
+				if (!n) return;
+				var pre = new Image();
+				pre.src = n.querySelector('img').getAttribute('src');
+			});
+		}
+
+		function lbOpen(tile) {
+			lbItems = lbVisibleTiles();
+			var start = lbItems.indexOf(tile);
+			if (start === -1) return;
+
+			lbOpener = tile;
+			lightbox.hidden = false;
+			document.body.classList.add('sjh-lb-open');
+			lbShow(start);
+			lbClose.focus();
+		}
+
+		function lbHide() {
+			lightbox.hidden = true;
+			document.body.classList.remove('sjh-lb-open');
+			lbImage.src = '';
+			/* Put focus back where it came from, or the page jumps to the top. */
+			if (lbOpener) { lbOpener.focus(); lbOpener = null; }
+		}
+
+		document.querySelectorAll('.sjh-tile').forEach(function (tile) {
+			tile.addEventListener('click', function () { lbOpen(tile); });
+		});
+
+		lbClose.addEventListener('click', lbHide);
+		lbPrev.addEventListener('click', function () { lbShow(lbAt - 1); });
+		lbNext.addEventListener('click', function () { lbShow(lbAt + 1); });
+
+		/* Clicking the backdrop closes; clicking the picture does not. */
+		lightbox.addEventListener('click', function (e) {
+			if (e.target === lightbox) lbHide();
+		});
+
+		document.addEventListener('keydown', function (e) {
+			if (lightbox.hidden) return;
+			if (e.key === 'Escape') { lbHide(); }
+			else if (e.key === 'ArrowLeft') { lbShow(lbAt - 1); }
+			else if (e.key === 'ArrowRight') { lbShow(lbAt + 1); }
+			else if (e.key === 'Tab') {
+				/* Keep Tab inside the dialog while it is open. */
+				var focusable = [lbClose, lbPrev, lbNext];
+				var i = focusable.indexOf(document.activeElement);
+				e.preventDefault();
+				focusable[(i + (e.shiftKey ? -1 : 1) + focusable.length) % focusable.length].focus();
+			}
+		});
+
+		/* Swipe on touch. 40px of travel, and only if the gesture is more
+		   horizontal than vertical, so it does not fight with scrolling. */
+		var touchX = 0, touchY = 0;
+		lightbox.addEventListener('touchstart', function (e) {
+			touchX = e.changedTouches[0].clientX;
+			touchY = e.changedTouches[0].clientY;
+		}, { passive: true });
+
+		lightbox.addEventListener('touchend', function (e) {
+			var dx = e.changedTouches[0].clientX - touchX;
+			var dy = e.changedTouches[0].clientY - touchY;
+			if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+				lbShow(dx < 0 ? lbAt + 1 : lbAt - 1);
+			}
+		}, { passive: true });
+	}
+
 });
