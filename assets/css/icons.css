@@ -1,0 +1,82 @@
+/*----------------------------------------------
+
+[Icons]
+
+A subset of Font Awesome Free 6 containing only the
+18 icons this site actually uses. Replaces the full
+99KB stylesheet and 924KB of font files with 3KB.
+
+Font Awesome Free is by Fonticons, Inc.
+  Icons : CC BY 4.0  — attribution required, see
+          THIRD-PARTY-NOTICES.md
+  Fonts : SIL OFL 1.1
+  Code  : MIT
+  https://fontawesome.com/license/free
+
+Subsetting is permitted under the OFL. The icon
+artwork is unchanged; only unused glyphs are removed.
+
+----------------------------------------------*/
+
+@font-face {
+	font-family: 'SJ Icons Solid';
+	src: url('../fonts/icons/sj-icons-solid.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+	font-display: block;
+}
+
+@font-face {
+	font-family: 'SJ Icons Brands';
+	src: url('../fonts/icons/sj-icons-brands.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: block;
+}
+
+/* Base — matches Font Awesome's own so existing markup keeps working */
+.fa,
+.fa-solid,
+.fa-brands {
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.fa,
+.fa-solid {
+	font-family: 'SJ Icons Solid';
+	font-weight: 900;
+}
+
+.fa-brands {
+	font-family: 'SJ Icons Brands';
+	font-weight: 400;
+}
+
+.fa-fw { width: 1.25em; text-align: center; }
+
+/* Solid */
+.fa-arrow-right::before { content: "\f061"; }
+.fa-arrow-right-long::before { content: "\f178"; }
+.fa-arrow-up-right-from-square::before { content: "\f08e"; }
+.fa-briefcase::before { content: "\f0b1"; }
+.fa-check::before { content: "\f00c"; }
+.fa-clock::before { content: "\f017"; }
+.fa-code::before { content: "\f121"; }
+.fa-envelope::before { content: "\f0e0"; }
+.fa-file-lines::before { content: "\f15c"; }
+.fa-image::before { content: "\f03e"; }
+.fa-location-dot::before { content: "\f3c5"; }
+.fa-lock-open::before { content: "\f3c1"; }
+.fa-paper-plane::before { content: "\f1d8"; }
+.fa-pen-ruler::before { content: "\f5ae"; }
+.fa-reply::before { content: "\f3e5"; }
+.fa-user::before { content: "\f007"; }
+
+/* Brands */
+.fa-github::before { content: "\f09b"; }
+.fa-linkedin::before { content: "\f08c"; }
