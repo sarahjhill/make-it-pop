@@ -1992,3 +1992,32 @@ body.sjh-lb-open { overflow: hidden; }
   .sjh-tile:hover img { transform: none; transition: none; }
   .sjh-lightbox { animation: none; }
 }
+
+/* ==========================================================================
+   Bootstrap utilities that the deep clean removed
+   --------------------------------------------------------------------------
+   Stripping bootstrap.min.css down to what the site used at the time was the
+   right call — 483 KB to 90 KB. The catch is that anything added later can
+   quietly reference a class that is no longer there, and a missing grid
+   utility fails silently: no error, just a layout that collapses.
+
+   .g-3 was the one that bit. .row sets --bs-gutter-y:0, and only a .g-* class
+   raises it. Without .g-3 the archive tiles had horizontal gutters but zero
+   vertical gap, so the rows sat flush on top of one another.
+
+   Copied from Bootstrap 5.2.0 verbatim rather than reinvented, so they behave
+   identically to the ones that survived.
+   ========================================================================== */
+
+.g-3,
+.gx-3 { --bs-gutter-x: 1rem; }
+
+.g-3,
+.gy-3 { --bs-gutter-y: 1rem; }
+
+.justify-content-center { justify-content: center !important; }
+
+@media (min-width: 992px) {
+  .col-lg-8 { flex: 0 0 auto; width: 66.66666667%; }
+  .col-lg-9 { flex: 0 0 auto; width: 75%; }
+}
