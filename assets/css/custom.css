@@ -1810,7 +1810,27 @@ filled in, and it's obvious at a glance what still needs replacing.
    Archive grid and lightbox
    ========================================================================== */
 
-.sjh-tiles { margin-top: 28px; }
+/* A grid of its own rather than Bootstrap columns.
+
+   .shuffle-item — reused here so the filter buttons work without new JS —
+   carries `width: 100% !important` from the homepage portfolio, where the
+   columns had to be neutralised so they could not fight that grid. No
+   column class can outrank it, so the tiles were each taking a full row.
+   Inside a grid, `width: 100%` means "fill your cell", which is right. */
+.sjh-tiles {
+  margin-top: 28px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+@media (min-width: 576px) {
+  .sjh-tiles { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
+
+@media (min-width: 992px) {
+  .sjh-tiles { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
 
 /* A button, not a div with a click handler — it needs to be reachable by
    keyboard and announce itself, and a button does both for free. */
