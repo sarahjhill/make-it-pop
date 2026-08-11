@@ -494,18 +494,31 @@ gradient + dark overlay absolutely fill whatever height that turns
 out to be, instead of the reverse.
 */
 
-#say-hello .banner {
+/*
+The same collapse hits the short closing CTA at the foot of every case
+study, for a different reason: .image-wrapper is height:auto and its
+only child, .gradient-panel, is height:100%. A percentage height
+against an auto parent resolves to auto, so the panel measures its own
+(empty) content and the banner ends up with no height at all. Both
+cases are cured by the same flip, so .sjh-closing-cta rides along with
+#say-hello rather than getting a near-identical copy of these rules.
+*/
+
+#say-hello .banner,
+.sjh-closing-cta .banner {
 	display: block;
 	height: auto;
 	min-height: 60vh;
 }
 
-#say-hello .content-wrapper {
+#say-hello .content-wrapper,
+.sjh-closing-cta .content-wrapper {
 	position: relative;
 	padding: 5rem 1.5rem;
 }
 
-#say-hello .image-wrapper {
+#say-hello .image-wrapper,
+.sjh-closing-cta .image-wrapper {
 	position: absolute;
 	inset: 0;
 	height: 100%;
@@ -515,10 +528,17 @@ out to be, instead of the reverse.
 unreliable against a parent whose height is auto/content-driven —
 inset:0 ties it to the parent's actual box no matter how that
 height was determined. */
-#say-hello .overlay {
+#say-hello .overlay,
+.sjh-closing-cta .overlay {
 	position: absolute;
 	inset: 0;
 	height: 100%;
+}
+
+/* The closing CTA is one heading and a button, so it does not need the
+   full-height treatment the homepage form does. */
+.sjh-closing-cta .banner {
+	min-height: 42vh;
 }
 
 .gradient-panel {
@@ -536,6 +556,19 @@ height was determined. */
 }
 
 /* #endregion Closing CTA gradient */
+
+/* #region Website audit page */
+
+/* The line crediting where the statistics come from. Deliberately quiet — it
+   should be findable by anyone who wants to check the numbers without
+   competing with the numbers themselves. */
+.sjh-audit-source {
+	font-size: 0.85rem;
+	line-height: 1.6;
+	opacity: 0.75;
+}
+
+/* #endregion Website audit page */
 
 /* #region Cursor active state */
 
