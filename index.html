@@ -54,14 +54,14 @@
     </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-10j" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-10j" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-12a" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-10j" />
-    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-10j" />
-    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-10j" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-10j" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-12a" />
 
   </head>
 
@@ -520,7 +520,7 @@
 
               <h2 class="title text-style-3 white">
                 <span class="text-1">Already have a site</span>
-                <span class="text-2 text-outline"> that is quietly <mark class="animated-underline tertiary">losing you work</mark>?</span>
+                <span class="text-2 text-outline"> that is quietly <mark class="animated-underline tertiary">losing you money</mark>?</span>
               </h2>
 
               <div class="description text-style-12 white-50">
@@ -544,6 +544,48 @@
           </div>
           <div class="image-wrapper">
             <div class="gradient-panel"></div>
+
+            <!-- Money out the window. Purely decorative, so it is hidden from
+                 assistive tech entirely. Every element here is empty: the notes,
+                 coins, window and swirl are all drawn in CSS, which means no
+                 image requests and nothing to load before the section paints.
+                 Sits between the gradient and the dark overlay, so the overlay
+                 dims it by the same amount it dims everything else — that is
+                 what keeps the heading and paragraph readable over the top. -->
+            <div class="mip-money" aria-hidden="true">
+              <span class="mip-shaft"></span>
+              <span class="mip-window">
+                <span class="pane"></span>
+                <span class="bar v"></span>
+                <span class="bar h"></span>
+                <span class="mip-swirl"></span>
+              </span>
+
+              <span class="note n1"><span class="inner"></span></span>
+              <span class="note n2"><span class="inner"></span></span>
+              <span class="note n3"><span class="inner"></span></span>
+              <span class="note n4"><span class="inner"></span></span>
+              <span class="note n5"><span class="inner"></span></span>
+              <span class="note n6"><span class="inner"></span></span>
+              <span class="note n7"><span class="inner"></span></span>
+              <span class="note n8"><span class="inner"></span></span>
+              <span class="note n9"><span class="inner"></span></span>
+              <span class="note n10"><span class="inner"></span></span>
+              <span class="note n11"><span class="inner"></span></span>
+              <span class="note n12"><span class="inner"></span></span>
+              <span class="note n13"><span class="inner"></span></span>
+              <span class="note n14"><span class="inner"></span></span>
+
+              <span class="coin c1"></span>
+              <span class="coin c2"></span>
+              <span class="coin c3"></span>
+              <span class="coin c4"></span>
+              <span class="coin c5"></span>
+              <span class="coin c6"></span>
+              <span class="coin c7"></span>
+              <span class="coin c8"></span>
+              <span class="coin c9"></span>
+            </div>
           </div>
           <div class="overlay black-65"></div>
         </div>
@@ -911,7 +953,7 @@
     </svg>
 
     <!-- JavaScript -->
-    <script src="assets/js/main.js?v=2026-08-10j"></script>
+    <script src="assets/js/main.js?v=2026-08-12a"></script>
 
     <!-- Portfolio covers: load the real site on hover.
          Nothing loads until you point at a card, only one frame is alive at a

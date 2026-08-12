@@ -557,6 +557,274 @@ height was determined. */
 
 /* #endregion Closing CTA gradient */
 
+/* #region Money out the window (homepage audit pitch) */
+
+/*
+The background of the #free-audit band: banknotes and coins converging on a lit
+window and accelerating through it.
+
+Two decisions worth knowing before changing anything here.
+
+First, the notes are positioned AT the window and animate FROM an offset back to
+zero, rather than starting where they are and travelling to the window. It reads
+the same on screen, but it means the destination is the window at every screen
+width, with no JavaScript measuring anything. Starting offsets are in vw so they
+scale with the band instead of drifting off-target on a wide monitor.
+
+Second, the easing is ease-IN, which is the whole effect. A note moving at a
+constant speed looks like it is floating; a note that barely moves and then
+accelerates into the glass looks like it is being pulled. Swap the curve for
+something ease-out and the section instantly becomes a snowstorm.
+*/
+
+#free-audit .mip-money {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	overflow: hidden;
+	pointer-events: none;
+	perspective: 900px;
+	perspective-origin: 80% 50%;
+}
+
+/* --- the window ------------------------------------------------------- */
+
+#free-audit .mip-window {
+	position: absolute;
+	right: 9%;
+	top: 50%;
+	width: 150px;
+	height: 200px;
+	transform: translateY(-50%) rotateY(-24deg);
+	transform-style: preserve-3d;
+}
+
+#free-audit .mip-window .pane {
+	position: absolute;
+	inset: 0;
+	border: 2px solid rgba(255, 255, 255, 0.68);
+	border-radius: 3px;
+	background: radial-gradient(ellipse at 50% 45%,
+		rgba(255, 255, 255, 0.58) 0%,
+		rgba(255, 255, 255, 0.19) 55%,
+		rgba(255, 255, 255, 0) 80%);
+	box-shadow: 0 0 99px 25px rgba(255, 255, 255, 0.22);
+	animation: mip-breathe 4.5s ease-in-out infinite;
+}
+
+#free-audit .mip-window .bar {
+	position: absolute;
+	background: rgba(255, 255, 255, 0.53);
+}
+
+#free-audit .mip-window .bar.v { left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; }
+#free-audit .mip-window .bar.h { top: 44%; left: 0; right: 0; height: 2px; }
+
+/* The pane brightens very slightly on a slow cycle, so the window reads as
+   pulling rather than simply being a window. */
+@keyframes mip-breathe {
+	0%, 100% { filter: brightness(1); }
+	50%      { filter: brightness(1.22); }
+}
+
+/* Two rings turning opposite ways in the plane of the glass. Small, faint, and
+   the single clearest signal that this is suction and not a draught. */
+#free-audit .mip-swirl {
+	position: absolute;
+	left: 50%;
+	top: 44%;
+	width: 118px;
+	height: 118px;
+	margin: -59px 0 0 -59px;
+	border-radius: 50%;
+	opacity: 0.62;
+}
+
+#free-audit .mip-swirl::before,
+#free-audit .mip-swirl::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+#free-audit .mip-swirl::before { animation: mip-spin 3.2s linear infinite; }
+#free-audit .mip-swirl::after  { inset: 22px; animation: mip-spin 2.1s linear infinite reverse; }
+
+@keyframes mip-spin { to { transform: rotate(360deg); } }
+
+/* The light leaning out of it. Blurred hard so it reads as glow, not a shape. */
+#free-audit .mip-shaft {
+	position: absolute;
+	right: 3%;
+	top: 50%;
+	width: 48%;
+	height: 330px;
+	transform: translateY(-50%);
+	background: linear-gradient(255deg,
+		rgba(255, 255, 255, 0.19) 0%,
+		rgba(255, 255, 255, 0.03) 40%,
+		rgba(255, 255, 255, 0) 74%);
+	filter: blur(16px);
+}
+
+/* --- the money -------------------------------------------------------- */
+
+/* Anchored at the window; the margins put the note's centre on the window's
+   centre, so translate3d(0,0,…) at the end of the loop lands it in the glass. */
+#free-audit .note,
+#free-audit .coin {
+	position: absolute;
+	right: 9%;
+	top: 50%;
+	opacity: 0;
+	animation-name: mip-suck;
+	animation-timing-function: cubic-bezier(0.55, 0.01, 0.86, 0.28);
+	animation-iteration-count: infinite;
+	will-change: transform, opacity;
+}
+
+#free-audit .note {
+	width: 46px;
+	height: 25px;
+	margin: -12px 52px 0 0;
+	border-radius: 3px;
+	transform-style: preserve-3d;
+	background: linear-gradient(115deg,
+		rgba(255, 255, 255, 0.94) 0%,
+		rgba(226, 240, 238, 0.88) 46%,
+		rgba(255, 255, 255, 0.96) 100%);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+	animation-name: mip-suck, mip-tumble;
+	animation-timing-function: cubic-bezier(0.55, 0.01, 0.86, 0.28), cubic-bezier(0.55, 0.01, 0.86, 0.28);
+	animation-iteration-count: infinite, infinite;
+}
+
+/* The printed border and the £, drawn rather than fetched. */
+#free-audit .note::before {
+	content: "";
+	position: absolute;
+	inset: 3px;
+	border: 1px solid rgba(105, 23, 208, 0.28);
+	border-radius: 2px;
+}
+
+#free-audit .note::after {
+	content: "£";
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	font-family: var(--secondary-font);
+	font-weight: 700;
+	font-size: 12px;
+	color: rgba(105, 23, 208, 0.62);
+}
+
+/* Flip runs on the inner span so it can keep its own clock — a note tumbling
+   end over end at a different rate from its spin never repeats a pose. */
+#free-audit .note .inner {
+	position: absolute;
+	inset: 0;
+	transform-style: preserve-3d;
+	animation: mip-flip 3s linear infinite;
+}
+
+#free-audit .coin {
+	width: 13px;
+	height: 13px;
+	margin: -6px 68px 0 0;
+	border-radius: 50%;
+	background: radial-gradient(circle at 34% 30%,
+		rgba(255, 255, 255, 0.95),
+		rgba(7, 190, 184, 0.55) 62%,
+		rgba(7, 190, 184, 0.15) 100%);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	filter: blur(0.4px);
+}
+
+@keyframes mip-suck {
+	0%   { transform: translate3d(var(--sx), var(--sy), 0) scale(1); opacity: 0; }
+	10%  { opacity: 0.95; }
+	82%  { opacity: 0.92; }
+	100% { transform: translate3d(0, 0, -640px) scale(0.06); opacity: 0; }
+}
+
+@keyframes mip-tumble {
+	0%   { rotate: z 0deg; }
+	100% { rotate: z var(--spin, 540deg); }
+}
+
+@keyframes mip-flip {
+	0%   { transform: rotate3d(1, 0.35, 0, 0deg); }
+	100% { transform: rotate3d(1, 0.35, 0, 360deg); }
+}
+
+/* Per-note paths. Negative delays start every note mid-flight, so the section
+   is already full of money on the first paint rather than filling up over the
+   first fifteen seconds. Durations are deliberately non-round and share no
+   common factor, which keeps the loop from visibly resetting. */
+#free-audit .n1  { --sx: -34vw; --sy: -168px; --spin: 480deg; animation-duration: 11.3s; animation-delay: -2.1s, -2.1s; }
+#free-audit .n2  { --sx: -58vw; --sy:   96px; --spin: 720deg; animation-duration: 13.7s; animation-delay: -9.4s, -9.4s; }
+#free-audit .n3  { --sx: -22vw; --sy:  184px; --spin: 400deg; animation-duration:  9.6s; animation-delay: -5.2s, -5.2s; }
+#free-audit .n4  { --sx: -71vw; --sy:  -74px; --spin: 610deg; animation-duration: 14.9s; animation-delay: -1.3s, -1.3s; }
+#free-audit .n5  { --sx: -45vw; --sy: -210px; --spin: 540deg; animation-duration: 12.2s; animation-delay: -7.8s, -7.8s; }
+#free-audit .n6  { --sx: -63vw; --sy:  152px; --spin: 860deg; animation-duration: 10.4s; animation-delay: -3.6s, -3.6s; }
+#free-audit .n7  { --sx: -29vw; --sy:  -38px; --spin: 460deg; animation-duration: 13.1s; animation-delay: -11.2s, -11.2s; }
+#free-audit .n8  { --sx: -80vw; --sy:   28px; --spin: 700deg; animation-duration: 15.3s; animation-delay: -6.5s, -6.5s; }
+#free-audit .n9  { --sx: -51vw; --sy:  212px; --spin: 380deg; animation-duration:  9.9s; animation-delay: -0.7s, -0.7s; }
+#free-audit .n10 { --sx: -38vw; --sy: -128px; --spin: 640deg; animation-duration: 12.8s; animation-delay: -8.9s, -8.9s; }
+#free-audit .n11 { --sx: -67vw; --sy:  -18px; --spin: 520deg; animation-duration: 11.7s; animation-delay: -4.4s, -4.4s; }
+#free-audit .n12 { --sx: -26vw; --sy:  118px; --spin: 780deg; animation-duration: 14.2s; animation-delay: -12.6s, -12.6s; }
+#free-audit .n13 { --sx: -75vw; --sy: -196px; --spin: 430deg; animation-duration: 10.8s; animation-delay: -2.9s, -2.9s; }
+#free-audit .n14 { --sx: -43vw; --sy:   62px; --spin: 590deg; animation-duration: 13.4s; animation-delay: -10.1s, -10.1s; }
+
+#free-audit .n1 .inner  { animation-duration: 2.3s; }
+#free-audit .n2 .inner  { animation-duration: 4.1s; }
+#free-audit .n3 .inner  { animation-duration: 2.9s; }
+#free-audit .n4 .inner  { animation-duration: 3.7s; }
+#free-audit .n5 .inner  { animation-duration: 2.1s; }
+#free-audit .n6 .inner  { animation-duration: 4.6s; }
+#free-audit .n7 .inner  { animation-duration: 3.2s; }
+#free-audit .n8 .inner  { animation-duration: 2.6s; }
+#free-audit .n9 .inner  { animation-duration: 4.3s; }
+#free-audit .n10 .inner { animation-duration: 3.4s; }
+#free-audit .n11 .inner { animation-duration: 2.8s; }
+#free-audit .n12 .inner { animation-duration: 4.8s; }
+#free-audit .n13 .inner { animation-duration: 3.9s; }
+#free-audit .n14 .inner { animation-duration: 2.4s; }
+
+#free-audit .c1 { --sx: -40vw; --sy: -142px; animation-duration: 14.6s; animation-delay: -3.1s; }
+#free-audit .c2 { --sx: -66vw; --sy:  128px; animation-duration: 12.4s; animation-delay: -8.2s; }
+#free-audit .c3 { --sx: -24vw; --sy:  -66px; animation-duration: 16.1s; animation-delay: -1.9s; }
+#free-audit .c4 { --sx: -54vw; --sy:  196px; animation-duration: 13.3s; animation-delay: -10.7s; }
+#free-audit .c5 { --sx: -77vw; --sy:  -12px; animation-duration: 15.5s; animation-delay: -5.8s; }
+#free-audit .c6 { --sx: -33vw; --sy:  164px; animation-duration: 11.9s; animation-delay: -0.4s; }
+#free-audit .c7 { --sx: -61vw; --sy: -182px; animation-duration: 16.8s; animation-delay: -7.3s; }
+#free-audit .c8 { --sx: -47vw; --sy:   44px; animation-duration: 12.7s; animation-delay: -12.1s; }
+#free-audit .c9 { --sx: -70vw; --sy:  -98px; animation-duration: 14.1s; animation-delay: -4.9s; }
+
+/* On a phone the band is short and the window is close to the text, so thin the
+   traffic out rather than cramming the same twenty-three objects into a third of
+   the width. Coins go first — they are depth, not subject. */
+@media (max-width: 767px) {
+	#free-audit .coin,
+	#free-audit .n4,
+	#free-audit .n8,
+	#free-audit .n11,
+	#free-audit .n13 { display: none; }
+
+	#free-audit .mip-window { width: 104px; height: 140px; right: 6%; }
+	#free-audit .mip-swirl { width: 84px; height: 84px; margin: -42px 0 0 -42px; }
+	#free-audit .note { width: 38px; height: 21px; margin-right: 34px; }
+	#free-audit .note::after { font-size: 10px; }
+}
+
+/* #endregion Money out the window */
+
 /* #region Website audit page */
 
 /* The line crediting where the statistics come from. Deliberately quiet — it
