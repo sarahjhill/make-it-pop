@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+    <!-- Display -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Identity -->
+    <title>Cardiff Community Meals — a working prototype looking for partners</title>
+    <meta name="description" content="A Cardiff platform where neighbours fund meals, local kitchens cook them, and every delivery is tracked. The prototype is built and working — now looking for businesses, public bodies and people willing to start a cooking rota." />
+    <meta name="author" content="Sarah Hill" />
+
+    <!-- Social preview — absolute urls only; scrapers ignore relative paths. -->
+    <meta property="og:site_name" content="Make It Pop" />
+    <meta property="og:title" content="Cardiff Community Meals — a cwtch, delivered with dinner" />
+    <meta property="og:description" content="A working prototype for a Cardiff meals platform. Looking for local kitchens, public bodies and neighbours willing to start a cooking rota." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sarahjhill.github.io/make-it-pop/cardiff-community-meals.html" />
+    <meta property="og:image" content="https://sarahjhill.github.io/make-it-pop/assets/images/og-make-it-pop.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cardiff Community Meals — a cwtch, delivered with dinner" />
+    <meta name="twitter:description" content="A working prototype for a Cardiff meals platform, looking for partners." />
+    <meta name="twitter:image" content="https://sarahjhill.github.io/make-it-pop/assets/images/og-make-it-pop.jpg" />
+
+    <!-- Favicon — SVG for modern browsers, .ico as the fallback -->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/images/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#07beb8" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+          href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    <noscript>
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,700;0,800;1,400&display=swap">
+    </noscript>
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-12a" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-12a" />
+
+  </head>
+
+  <body class="mip-body">
+
+    <!-- Header -->
+    <header id="header" class="mip-header">
+      <nav id="navbar" class="navbar">
+        <div class="container">
+          <!-- Brand -->
+          <a class="navbar-brand" href="index.html#top">
+            <img src="assets/images/logo-sjh-white.svg" alt="SJ Development" class="logo" />
+            <span class="navbar-brand-text">
+              <span class="brand-tag">SJ Development</span>
+              <span class="brand-name">Make It Pop</span>
+            </span>
+          </a>
+
+          <!-- Responsive menu toggle -->
+          <button class="navbar-toggler" id="navbar-toggler" aria-expanded="false" aria-controls="navbar-items" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+            </span>
+          </button>
+
+          <div id="navbar-items" class="navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
+              <li class="nav-item"><a class="nav-link" href="index.html#pages">Portfolio</a></li>
+              <li class="nav-item"><a class="nav-link" href="website-audit.html">Free Audit</a></li>
+              <li class="nav-item"><a class="nav-link" href="index.html#say-hello">Say Hello</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main id="main" class="mip-main">
+
+      <!-- Project hero -->
+      <section id="top" class="mip-section has-divider bg-fixed overflow-hidden sjh-stack-title" style="background: linear-gradient(to right bottom, rgba(31, 158, 140, 1) 0%, rgba(84, 58, 183, 1) 100%);">
+        <div class="holder vh-75 align-v-center">
+          <div class="basic-intro max-w-75 mb-35 text-center">
+
+            <a href="index.html#pages" class="project-back">
+              <i class="fa-solid fa-arrow-right"></i>
+              Back to Portfolio
+            </a>
+
+            <div>
+              <span class="badge outline white">
+                <span class="badge-text white">Working prototype — looking for partners</span>
+              </span>
+            </div>
+
+            <h1 class="title text-style-3 white">
+              <span class="text-1 text-outline">Cardiff Community</span>
+              <span class="text-2 text-italic"><mark class="animated-underline tertiary"><span class="mark-text">Meals</span></mark>.</span>
+            </h1>
+
+            <div class="description text-style-12 white-50">
+              <p>Neighbours fund a meal. A local kitchen cooks it. Someone who needs it eats it,
+                and every step is tracked. A cwtch, delivered with dinner.</p>
+            </div>
+
+            <a href="https://sarahjhill.github.io/cardiff-community-meals/" target="_blank" rel="noopener" class="button outline white tertiary-hover magnetic-effect">
+              <span class="button-text white white-hover">See the live prototype</span>
+              <i class="fa-solid fa-arrow-up-right-from-square button-icon white white-hover"></i>
+            </a>
+
+            <div class="project-meta">
+              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-location-dot"></i>&nbsp; Caerdydd &middot; Cardiff</span></span>
+              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-code"></i>&nbsp; Built and running</span></span>
+              <span class="badge outline white"><span class="badge-text white"><i class="fa-solid fa-heart"></i>&nbsp; Not-for-profit</span></span>
+            </div>
+          </div>
+        </div>
+        <!-- Divider -->
+        <div class="position-relative">
+          <svg viewBox="0 0 1000 155.1" enable-background="new 0 0 1000 155.1" xml:space="preserve">
+            <g>
+              <rect x="-2.4" y="131.9" fill="#fff" width="1005.6" height="63"/>
+              <path fill="#fff" d="M-2.5,72.8c85.3,89.4,442.9-28.5,507.4,40c56.9,60.5,377.5-45.8,498.2-28.8v79.4H-2.5V72.8z"/>
+              <path fill="#fff" d="M1003,36.3v95.9H-2.6V13.7c170.6,178.9,376.4-57,505.4,80.1C616.6,214.9,761.6,2.2,1003,36.3z"/>
+            </g>
+            <g opacity="0.1">
+              <rect x="-2.7" y="118.1" fill="#F4F4F6" width="1005.6" height="63"/>
+              <path fill="#fff" d="M-2.8,59.1c85.3,89.4,442.9-28.5,507.4,40c56.9,60.5,377.5-45.8,498.2-28.8v79.4H-2.8V59.1z"/>
+              <path fill="#fff" d="M1002.7,22.6v95.9H-2.9V0c170.6,178.9,376.4-57,505.4,80.1C616.3,201.1,761.3-11.5,1002.7,22.6z"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Where it stands -->
+      <section id="status" class="mip-section pt-5 pb-5">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-12 col-md-6 align-v-center">
+              <div class="basic-intro">
+                <h2 class="title black text-gradient scheme-1">
+                  <span class="text-1 text-style-5">Where it </span>
+                  <span class="text-2 text-style-6 text-italic">stands today.</span>
+                </h2>
+                <div class="description gray mb-35">
+                  <p>The platform is built and you can use it right now. Requests, donations,
+                    business applications, delivery tracking and the public impact record all
+                    work end to end.</p>
+                  <p><strong>It is a prototype, and I am not going to pretend otherwise.</strong>
+                    Payments and donations are simulated, and the businesses listed are
+                    demonstration profiles rather than signed-up kitchens. Everything else is
+                    real working software waiting for real people to put behind it.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 align-v-center">
+              <div class="basic-intro">
+                <ul class="icon-list">
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Anyone can request a meal for themselves, or refer a neighbour, relative or patient</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Every request is checked before it appears, and nobody is listed without consent</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Donors browse open requests, choose how many meals to fund, and pick the kitchen</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Businesses apply with their FSA hygiene rating and delivery capability</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Bronze, Silver and Gold Community Kitchen badges recognise the ones who do most</li>
+                  <li class="item"><i class="icon fa-solid fa-check tertiary"></i>Every meal is tracked to confirmed delivery and counted in the public record</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="mip-section pt-3 pb-3">
+        <div class="container">
+          <span class="zzz large scheme-2 secondary"></span>
+        </div>
+      </div>
+
+      <!-- Why it is built this way -->
+      <section id="why" class="mip-section pt-6 pb-6 bg-color gray-10">
+        <div class="container">
+          <div class="basic-intro mb-35 text-center">
+            <h2 class="title text-style-5 black">
+              <span class="text-2 text-italic">Why it works <mark class="animated-underline tertiary">this way</mark>.</span>
+            </h2>
+            <div class="description gray">
+              <p>There are food banks, and they do essential work. This is deliberately a
+                different shape, and each difference is there for a reason.</p>
+            </div>
+          </div>
+
+          <ul class="sjh-skills">
+
+            <li class="sjh-skill" data-aos>
+              <span class="sjh-skill-icon" aria-hidden="true"><i class="fa-solid fa-sterling-sign"></i></span>
+              <h3 class="sjh-skill-title">The money stays in Cardiff</h3>
+              <p class="sjh-skill-body">Every meal funded is paid to a Cardiff kitchen, not a
+                national chain and not a distribution centre in another county. The same pound
+                feeds someone and keeps a local job.</p>
+              <p class="sjh-skill-win"><strong>Which means</strong> the city gets two things back
+                for every one it puts in.</p>
+            </li>
+
+            <li class="sjh-skill" data-aos data-aos-delay="100">
+              <span class="sjh-skill-icon" aria-hidden="true"><i class="fa-solid fa-user-shield"></i></span>
+              <h3 class="sjh-skill-title">Dignity is designed in</h3>
+              <p class="sjh-skill-body">Nobody is named without consenting to it, requests are
+                verified before they go public, and a referral can come from a neighbour or a
+                nurse rather than requiring someone to ask for themselves.</p>
+              <p class="sjh-skill-win"><strong>Which means</strong> people who would never join a
+                queue can still be fed.</p>
+            </li>
+
+            <li class="sjh-skill" data-aos>
+              <span class="sjh-skill-icon" aria-hidden="true"><i class="fa-solid fa-utensils"></i></span>
+              <h3 class="sjh-skill-title">It is a proper meal</h3>
+              <p class="sjh-skill-body">Cooked food, delivered hot, from a kitchen with an FSA
+                rating on record. Not a tin and a packet of pasta to take home to a flat with the
+                electricity off.</p>
+              <p class="sjh-skill-win"><strong>Which means</strong> it reaches people a parcel
+                cannot help.</p>
+            </li>
+
+            <li class="sjh-skill" data-aos data-aos-delay="100">
+              <span class="sjh-skill-icon" aria-hidden="true"><i class="fa-solid fa-eye"></i></span>
+              <h3 class="sjh-skill-title">Every meal is accounted for</h3>
+              <p class="sjh-skill-body">Donors see their meal tracked through to confirmed
+                delivery. The public totals are the sum of real deliveries rather than a marketing
+                figure nobody can check.</p>
+              <p class="sjh-skill-win"><strong>Which means</strong> a funder can audit it, which is
+                what makes funding possible.</p>
+            </li>
+
+            <li class="sjh-skill" data-aos>
+              <span class="sjh-skill-icon" aria-hidden="true"><i class="fa-solid fa-language"></i></span>
+              <h3 class="sjh-skill-title">Cymraeg yn gyntaf — Welsh first</h3>
+              <p class="sjh-skill-body">The whole platform is bilingual and Welsh is the default,
+                not a translation bolted on at the end. Every page, every form, every button, with
+                a toggle for English.</p>
+              <p class="sjh-skill-win"><strong>Which means</strong> a Welsh public body can point at
+                it without wincing, and a Welsh speaker is not treated as an afterthought.</p>
+            </li>
+
+            <li class="sjh-skill" data-aos data-aos-delay="100">
+              <span class="sjh-skill-icon" aria-hidden="true"><i class="fa-solid fa-handshake-angle"></i></span>
+              <h3 class="sjh-skill-title">Welcoming, without conditions</h3>
+              <p class="sjh-skill-body">Open to absolutely everyone — however you got here,
+                whatever your situation, whoever you are. No means test, no proof of hardship, no
+                questions about your circumstances.</p>
+              <p class="sjh-skill-win"><strong>Which means</strong> nobody has to prove they deserve
+                dinner.</p>
+            </li>
+
+          </ul>
+        </div>
+      </section>
+
+      <!-- What happens next -->
+      <section id="next" class="mip-section pt-6 pb-6">
+        <div class="container">
+          <div class="basic-intro mb-35 text-center">
+            <h2 class="title text-style-5 black text-gradient scheme-3">
+              <span class="text-2 text-italic">What it needs next.</span>
+            </h2>
+            <div class="description gray">
+              <p>The software is the easy part and it is already done. What turns a prototype into
+                something that feeds people is three groups of humans saying yes.</p>
+            </div>
+          </div>
+
+          <div class="sjh-steps">
+            <div class="sjh-card is-first">
+              <span class="sjh-num">1</span>
+              <h3 class="sjh-card-title">Local kitchens willing to cook</h3>
+              <p class="sjh-card-body">Cafés, takeaways, restaurants, caterers and community
+                kitchens anywhere in Cardiff. You would be paid for the meals you cook — this is
+                not a request for donated food. You need a current FSA hygiene rating and a way to
+                get a meal to a door, whether that is your own driver or a courier.</p>
+              <p class="sjh-card-need"><strong>What I need from you:</strong> a conversation, and
+                eventually your first booking. Start small — five meals a week is a real start.</p>
+            </div>
+
+            <div class="sjh-card">
+              <span class="sjh-num">2</span>
+              <h3 class="sjh-card-title">Public bodies and funders</h3>
+              <p class="sjh-card-body">Cardiff Council, health boards, housing associations,
+                social prescribers, GP surgeries and community trusts. Two things would change
+                everything: a referral route so professionals can refer someone directly, and
+                enough backing to cover the first few hundred meals while the donation side finds
+                its feet. At the prototype&rsquo;s £7 a meal, five hundred meals is £3,500 — small
+                enough to sit inside an existing budget line, and large enough to prove whether
+                any of this works.</p>
+              <p class="sjh-card-need"><strong>What I need from you:</strong> someone to talk to,
+                a view on safeguarding and data protection, and honesty about what would have to be
+                true before you could refer to it.</p>
+            </div>
+
+            <div class="sjh-card">
+              <span class="sjh-num">3</span>
+              <h3 class="sjh-card-title">People who want to start a cooking rota</h3>
+              <p class="sjh-card-body">This is the part that does not exist yet, and the part I
+                most want to build. A rota is a handful of neighbours, a mosque, a church hall, a
+                WI group or a street WhatsApp who agree to cook on a rotation — one household
+                cooks Tuesday, another Thursday — for people nearby who need it. Paid kitchens
+                cover what a rota cannot, and the rota covers what money should not have to.</p>
+              <p class="sjh-card-need"><strong>What I need from you:</strong> to tell me you would
+                use it, and what would have to be true for you to trust it. I will build the rota
+                tools around real groups, not guesses.</p>
+            </div>
+
+            <div class="sjh-card">
+              <span class="sjh-num">4</span>
+              <h3 class="sjh-card-title">The things I know are missing</h3>
+              <p class="sjh-card-body">Real payments, and a registered not-for-profit to hold them.
+                A safeguarding policy reviewed by people who do this for a living rather than one
+                written by a developer in good faith. Allergen and dietary handling a food business
+                would actually sign off. A real domain instead of a placeholder, and a moderation
+                queue staffed by humans rather than demonstrated by one. None of these are hard;
+                all of them need the right person in the room.</p>
+              <p class="sjh-card-need"><strong>What I need from you:</strong> if you do any of this
+                for a living, half an hour of your time would be worth more than a month of mine.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Get involved -->
+      <section id="involved" class="mip-section pt-6 pb-6 bg-color gray-10">
+        <div class="container">
+          <div class="basic-intro mb-35 text-center">
+            <h2 class="title text-style-5 black">
+              <span class="text-2 text-italic">Come and be <mark class="animated-underline tertiary">part of it</mark>.</span>
+            </h2>
+            <div class="description gray">
+              <p>Whichever of those three you are, there is a way in below. No commitment
+                attached to any of them — a conversation is genuinely useful on its own.</p>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-12 col-md-4">
+              <div class="basic-intro">
+                <h3 class="sjh-card-title">If you run a kitchen</h3>
+                <div class="description gray mb-35">
+                  <p>Apply through the prototype itself. The demo approves you instantly so you can
+                    see exactly what your public profile would look like before committing to
+                    anything.</p>
+                </div>
+                <a href="https://sarahjhill.github.io/cardiff-community-meals/partner.html" target="_blank" rel="noopener" class="sjh-work-links">
+                  Partner your business <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="basic-intro">
+                <h3 class="sjh-card-title">If you are a public body</h3>
+                <div class="description gray mb-35">
+                  <p>Email me and I will come to you, walk you through the platform, and answer
+                    the safeguarding and data questions properly rather than hand-waving them.</p>
+                </div>
+                <a href="mailto:hantaah21@gmail.com?subject=Cardiff%20Community%20Meals%20%E2%80%94%20public%20body%20enquiry" class="sjh-work-links">
+                  Arrange a walkthrough <i class="fa-solid fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="basic-intro">
+                <h3 class="sjh-card-title">If you want to start a rota</h3>
+                <div class="description gray mb-35">
+                  <p>Tell me who you are and roughly how many households might join in. You will
+                    be shaping the rota tools before they are built, which is the best time to
+                    have an opinion.</p>
+                </div>
+                <a href="mailto:hantaah21@gmail.com?subject=Cardiff%20Community%20Meals%20%E2%80%94%20starting%20a%20cooking%20rota" class="sjh-work-links">
+                  Start a cooking rota <i class="fa-solid fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Honest note -->
+      <section id="honest" class="mip-section pt-6 pb-6">
+        <div class="container">
+          <div class="basic-intro max-w-75 text-center" style="margin: 0 auto;">
+            <h2 class="title black text-gradient scheme-2">
+              <span class="text-1 text-style-5">One more thing, </span>
+              <span class="text-2 text-style-6 text-italic">plainly.</span>
+            </h2>
+            <div class="description gray">
+              <p>I built this because it should exist, not because anyone commissioned it. It is
+                not a company, there is nothing to invest in, and I am not asking anyone for
+                money.</p>
+              <p>If it turns out somebody in Cardiff is already doing this properly, I would rather
+                hand them the code than compete with them. Tell me and I will.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing CTA -->
+      <section class="mip-section has-overlay sjh-closing-cta">
+        <div class="banner">
+          <div class="content-wrapper text-center">
+            <div class="basic-intro max-w-75 text-center">
+              <h2 class="title text-style-3 white">
+                <span class="text-1">Cardiff looks</span>
+                <span class="text-2 text-outline"> after its <mark class="animated-underline tertiary">own</mark>.</span>
+              </h2>
+              <div class="description text-style-12 white-50">
+                <p>Have a look at what is already built, then tell me what it would take to make
+                  it real.</p>
+              </div>
+              <a href="https://sarahjhill.github.io/cardiff-community-meals/" target="_blank" rel="noopener" class="button outline white tertiary-hover magnetic-effect">
+                <span class="button-text white white-hover">Open the prototype</span>
+                <i class="fa-solid fa-arrow-up-right-from-square button-icon white white-hover"></i>
+              </a>
+            </div>
+          </div>
+          <div class="image-wrapper">
+            <div class="gradient-panel"></div>
+          </div>
+          <div class="overlay black-65"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mip-footer scheme-1">
+      <div class="container">
+        <div class="footer-content">
+          <div class="row g-4">
+
+            <!-- Brand -->
+            <div class="col-12 col-md-5">
+              <div class="footer-item">
+                <a class="footer-brand" href="index.html#top">
+                  <img src="assets/images/logo-sjh-white.svg" alt="SJ Development" class="logo" />
+                  <span class="logo-after-text">Make It Pop</span>
+                </a>
+                <p class="footer-text">
+                  Websites for community projects, charities and small local businesses.
+                  Built by hand, made to last, and yours to own.
+                </p>
+                <p class="footer-text sjh-footer-meta">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Cardiff, Wales
+                </p>
+              </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="col-6 col-md-3">
+              <div class="footer-item">
+                <h2 class="title">Explore</h2>
+                <ul class="nav nav-list flex-column">
+                  <li class="nav-item"><a class="nav-link" href="index.html#about"><span class="text">About</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="index.html#pages"><span class="text">Portfolio</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="website-audit.html"><span class="text">Free website audit</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="index.html#say-hello"><span class="text">How it works</span></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Get in touch -->
+            <div class="col-6 col-md-4">
+              <div class="footer-item">
+                <h2 class="title">Start something</h2>
+                <ul class="nav nav-list flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link has-icon"
+                       href="https://sarahjhill.github.io/cardiff-community-meals/"
+                       target="_blank" rel="noopener">
+                      <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                      <span class="text">Cardiff Community Meals</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon"
+                       href="https://sarahjhill.github.io/project-os/forms/intake.html">
+                      <i class="fa-solid fa-arrow-right icon" aria-hidden="true"></i>
+                      <span class="text">Start a project enquiry</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon" href="mailto:hantaah21@gmail.com">
+                      <i class="fa-solid fa-envelope icon" aria-hidden="true"></i>
+                      <span class="text">hantaah21@gmail.com</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link has-icon"
+                       href="https://www.linkedin.com/in/sarah-hill-software-developer/"
+                       target="_blank" rel="noopener">
+                      <i class="fa-brands fa-linkedin icon" aria-hidden="true"></i>
+                      <span class="text">LinkedIn</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Copyright -->
+          <div class="sjh-footer-bottom">
+            <p class="sjh-copyright">
+              &copy; <span id="sjh-year">2026</span> SJ Development. All rights reserved.
+            </p>
+            <p class="sjh-legal">
+              Make It Pop is a trading name of SJ Development. Site copy, custom code and
+              branding are my own work and not licensed for reuse.
+              Built with Bootstrap and Font Awesome.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+    <!-- Side Widget -->
+    <div class="side-widget to-left invert-color mix-blend-difference d-only-desktop">
+      <div class="item">
+        <a href="https://sarahjhill.github.io/cardiff-community-meals/" target="_blank" rel="noopener" class="link black black-hover hover-up">
+          <span class="widget label-vertical">
+            <span class="label-text black"><i class="fa-solid fa-arrow-right-long icon"></i>Open The Prototype</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Side Widget -->
+    <div class="side-widget to-right invert-color mix-blend-difference d-only-desktop">
+      <div class="item">
+        <a href="#top" class="link black black-hover hover-up">
+          <span class="widget label-vertical">
+            <span class="label-text black"><i class="fa-solid fa-arrow-right-long icon"></i>Scroll to top</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Toast: shown after clicking a mailto link -->
+    <div id="mail-toast" class="mail-toast" role="status" aria-live="polite">
+      <i class="fa-solid fa-paper-plane"></i>
+      <span>Opening your email app — your message is ready to send!</span>
+    </div>
+
+    <!-- Cursor -->
+    <svg class="cursor-effect tertiary" width="220" height="220" viewBox="0 0 220 220">
+      <defs>
+        <filter id="cursor-effect-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+          <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="1" result="warp"></feTurbulence>
+          <feOffset dx="-30" result="warpOffset"></feOffset>
+          <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="20" in="SourceGraphic" in2="warpOffset"></feDisplacementMap>
+        </filter>
+      </defs>
+      <circle class="cursor-effect-inner" cx="110" cy="110" r="20"></circle>
+    </svg>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js?v=2026-08-12a"></script>
+
+    <!-- Footer year: keeps the copyright current without editing the file each January -->
+    <script>
+      (function () {
+        var el = document.getElementById('sjh-year');
+        if (el) el.textContent = new Date().getFullYear();
+      })();
+    </script>
+
+  </body>
+
+</html>
