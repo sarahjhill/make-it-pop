@@ -119,6 +119,7 @@ brand colors rather than one flat color repeated twice. */
 	font-size: 0.7rem;
 	font-weight: 700;
 	letter-spacing: 0.03em;
+	text-transform: uppercase;
 	color: var(--white-65-color);
 }
 
@@ -151,8 +152,11 @@ brand colors rather than one flat color repeated twice. */
 
 @media (max-width: 420px) {
 
+	/* The tag line is the brand now, not a strapline — keep it and shrink
+	   it rather than dropping it. Revert to `display: none` for the old
+	   behaviour. */
 	.navbar-brand .brand-tag {
-		display: none;
+		font-size: 0.62rem;
 	}
 
 	.navbar-brand .brand-name {
@@ -1331,7 +1335,7 @@ filled in, and it's obvious at a glance what still needs replacing.
 }
 
 /* ==========================================================================
-   Footer — SJ Development
+   Footer — Sarah J Hill
    Everything here is scoped under .mip-footer so it cannot leak into the
    rest of the page. The theme already styles .mip-footer, .footer-brand,
    .nav-link etc; this only adds the parts it does not cover.
