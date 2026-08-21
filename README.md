@@ -1,7 +1,7 @@
 # Make It Pop
 
 Websites for community projects, charities and small local businesses.
-The public site for **SJ Development**.
+The public site for **Sarah J Hill**.
 
 **Live:** https://sarahjhill.github.io/make-it-pop/
 
@@ -54,7 +54,7 @@ window when checking icon changes.
 
 ## Licence
 
-Copyright © 2026 Sarah Hill, trading as SJ Development. All rights reserved.
+Copyright © 2026 Sarah Hill, trading as Sarah J Hill. All rights reserved.
 
 The original content, copy, custom CSS, JavaScript and branding in this
 repository are not licensed for reuse — see [LICENSE](LICENSE).

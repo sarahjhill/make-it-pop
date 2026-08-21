@@ -27,7 +27,7 @@ the theme source itself, which is why the purchased package is deliberately
 kept out of this public repository.
 
 **What has been changed:** the three stylesheets have been rebranded to
-SJ Development, stripped of components this site never uses, and simplified.
+Sarah J Hill, stripped of components this site never uses, and simplified.
 The template's PHP mailer (`php/PHPMailer/`) was never used — this site has
 no server-side code at all — so none of the GPL portion is present here.
 
@@ -100,4 +100,4 @@ Not third-party, and covered by `LICENSE`:
   Lightbox, Typed.js, ProgressBar.js, lax.js and others) with one small
   dependency-free script
 - All page copy, structure and imagery
-- The SJ Development logo, favicon and icon set
+- The Sarah J Hill logo, favicon and icon set

@@ -1,5 +1,5 @@
 {
-  "name": "Make It Pop — SJ Development",
+  "name": "Make It Pop — Sarah J Hill",
   "short_name": "Make It Pop",
   "description": "Websites for community projects, charities and small local businesses.",
   "start_url": "/",
@@ -7,7 +7,7 @@
   "background_color": "#ffffff",
   "theme_color": "#07beb8",
   "icons": [
-    { "src": "assets/images/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/images/icon-app.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     { "src": "assets/images/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/images/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
