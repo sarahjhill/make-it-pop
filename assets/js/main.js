@@ -468,12 +468,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	   on hover or focus, and steps aside for good once someone actually
 	   chooses a step. The bodies start open in the HTML and are only
 	   collapsed once this runs, so without JavaScript nothing is hidden. */
+	var railWrap = document.querySelector('.sjh-hello .sjh-rail-wrap');
 	var rail = document.querySelector('.sjh-hello .sjh-rail');
 
 	if (rail) {
 		var railSteps = Array.prototype.slice.call(rail.querySelectorAll('.sjh-rail-step'));
 		var railBtns = railSteps.map(function (s) { return s.querySelector('.sjh-rail-btn'); });
-		var railFill = rail.querySelector('.sjh-rail-fill');
+		var railFill = railWrap ? railWrap.querySelector('.sjh-rail-fill') : null;
 		var DWELL = 4500;
 		var railAt = 0, railTimer = null, railPaused = false;
 		var railAuto = !(window.matchMedia &&
@@ -501,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (!railFill) { return; }
 			var dot = railSteps[railAt].querySelector('.sjh-rail-dot');
 			var dr = dot.getBoundingClientRect();
-			var rr = rail.getBoundingClientRect();
+			var rr = railWrap.getBoundingClientRect();
 			railFill.style.height = Math.max(0, (dr.top - rr.top) + (dr.height / 2) - 22) + 'px';
 		}
 

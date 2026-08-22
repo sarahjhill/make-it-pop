@@ -1130,11 +1130,18 @@ filled in, and it's obvious at a glance what still needs replacing.
    A single column at every width. The track is a hairline; the fill grows
    over it as the steps advance. Steps behind the current one stay teal so
    the whole shape of the process is readable at a glance. */
+/* The track and fill live on a wrapper, not inside the <ol>: only <li> is
+   valid as a direct child of a list, and the validator is right to say so. */
+.sjh-hello .sjh-rail-wrap {
+  position: relative;
+  max-width: 720px;
+  margin: 40px auto 0;
+}
+
 .sjh-hello .sjh-rail {
   position: relative;
   list-style: none;
-  max-width: 720px;
-  margin: 40px auto 0;
+  margin: 0;
   padding: 0 0 0 62px;
   text-align: left;
   counter-reset: none;
@@ -1289,7 +1296,8 @@ filled in, and it's obvious at a glance what still needs replacing.
 .sjh-hello .sjh-rail-need strong { color: var(--sjh-cyan); font-weight: 700; }
 
 @media (max-width: 575px) {
-  .sjh-hello .sjh-rail { padding-left: 52px; margin-top: 30px; }
+  .sjh-hello .sjh-rail { padding-left: 52px; }
+  .sjh-hello .sjh-rail-wrap { margin-top: 30px; }
   .sjh-hello .sjh-rail-track,
   .sjh-hello .sjh-rail-fill { left: 18px; }
   .sjh-hello .sjh-rail-dot { left: -52px; width: 38px; height: 38px; font-size: 14px; }

@@ -81,7 +81,7 @@
           </a>
 
           <!-- Responsive menu toggle -->
-          <button class="navbar-toggler" id="navbar-toggler" aria-expanded="false" aria-controls="navbar-items" aria-label="Toggle navigation">
+          <button type="button" class="navbar-toggler" id="navbar-toggler" aria-expanded="false" aria-controls="navbar-items" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
               <span class="line"></span>
               <span class="line"></span>
@@ -289,22 +289,22 @@
             <div class="horizontal-tab scheme-1 accent">
               <ul class="nav nav-tabs">
                 <li class="nav-item">
-                  <button class="nav-link shuffle-button active" data-value="All">All</button>
+                  <button type="button" class="nav-link shuffle-button active" data-value="All">All</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link shuffle-button" data-value="Community">Good causes</button>
+                  <button type="button" class="nav-link shuffle-button" data-value="Community">Good causes</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link shuffle-button" data-value="Websites">Business sites</button>
+                  <button type="button" class="nav-link shuffle-button" data-value="Websites">Business sites</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link shuffle-button" data-value="Tools">Tools I built</button>
+                  <button type="button" class="nav-link shuffle-button" data-value="Tools">Tools I built</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link shuffle-button" data-value="Media">Emails &amp; media</button>
+                  <button type="button" class="nav-link shuffle-button" data-value="Media">Emails &amp; media</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link shuffle-button" data-value="Learning">Learning</button>
+                  <button type="button" class="nav-link shuffle-button" data-value="Learning">Learning</button>
                 </li>
               </ul>
               <div class="row">
@@ -749,9 +749,10 @@
                    what-happens are never separated. It plays through on its own
                    and stops the moment someone takes over. Without JavaScript
                    every step is simply open. -->
-              <ol class="sjh-rail">
+              <div class="sjh-rail-wrap">
                 <span class="sjh-rail-track" aria-hidden="true"></span>
                 <span class="sjh-rail-fill" aria-hidden="true"></span>
+                <ol class="sjh-rail">
                   <li class="sjh-rail-step is-on">
                     <button type="button" class="sjh-rail-btn" aria-expanded="true">
                       <span class="sjh-rail-dot" aria-hidden="true">1</span>
@@ -831,7 +832,8 @@
                       </p>
                     </div>
                   </li>
-              </ol>
+                </ol>
+              </div>
 
               <div id="sjh-cta" class="sjh-cta">
                 <div class="sjh-cta-inner">
