@@ -2536,3 +2536,128 @@ body.sjh-lb-open { overflow: hidden; }
   .col-lg-8 { flex: 0 0 auto; width: 66.66666667%; }
   .col-lg-9 { flex: 0 0 auto; width: 75%; }
 }
+
+/* ==========================================================================
+   Audit page — the leak
+
+   The paragraph that used to sit here described four things happening one
+   after another, which is a list pretending to be prose. It is a list now,
+   with the animation alongside it: the copy carries the meaning, the picture
+   carries the feeling.
+   ========================================================================== */
+.sjh-leak-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+@media (min-width: 992px) {
+  .sjh-leak-split {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 54px;
+  }
+}
+
+.sjh-leak-copy .title { margin-bottom: 26px; }
+
+.sjh-leak-list {
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+  counter-reset: none;
+}
+.sjh-leak-list > li::before { content: none; }
+
+.sjh-leak-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--gray-25-color);
+}
+.sjh-leak-step:last-child { border-bottom: 0; }
+
+/* The graphic: a gradient tile, and the last one goes pink because that is
+   the step where the money actually leaves. */
+.sjh-leak-ico {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0 8px 20px rgba(7, 190, 184, .22);
+}
+
+.sjh-leak-step:last-child .sjh-leak-ico {
+  background: linear-gradient(135deg, var(--tertiary-color), var(--secondary-color));
+  box-shadow: 0 8px 20px rgba(255, 23, 145, .26);
+}
+
+.sjh-leak-txt { display: block; }
+
+.sjh-leak-txt strong {
+  display: block;
+  margin-bottom: 3px;
+  font-family: var(--secondary-font);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--black-color);
+}
+
+.sjh-leak-txt > span {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--gray-color);
+}
+
+.sjh-leak-foot {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--gray-color);
+}
+
+/* ---------- the animation ---------- */
+.sjh-leak-panel {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 22px;
+  overflow: hidden;
+  /* Light, to sit with the rest of the page rather than punching a dark hole
+     in it. The faint teal wash keeps the vessel from floating on bare white. */
+  background: linear-gradient(150deg, #f8fbfb, #eaf3f5);
+  border: 1px solid var(--gray-25-color);
+  box-shadow: 0 14px 34px rgba(26, 26, 32, .07);
+}
+
+.sjh-leak-canvas { display: block; }
+
+.sjh-leak-cap {
+  margin: 14px 0 0;
+  text-align: center;
+  font-family: var(--secondary-font);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--gray-color);
+}
+
+@media (max-width: 991px) {
+  .sjh-leak-panel { height: 340px; }
+}
+
+@media (max-width: 575px) {
+  .sjh-leak-panel { height: 280px; border-radius: 18px; }
+  .sjh-leak-ico { width: 42px; height: 42px; font-size: 16px; border-radius: 12px; }
+  .sjh-leak-step { gap: 13px; padding: 13px 0; }
+}
+

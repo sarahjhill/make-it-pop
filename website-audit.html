@@ -45,14 +45,14 @@
     </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-22d" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-22d" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-22f" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-22f" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-22d" />
-    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-22d" />
-    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-22d" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-22d" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-22f" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-22f" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-22f" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-22f" />
 
   </head>
 
@@ -154,19 +154,59 @@
       <!-- The problem -->
       <section id="the-problem" class="mip-section pt-5 pb-5">
         <div class="container">
-          <div class="basic-intro mb-35 text-center">
-            <h2 class="title black text-gradient scheme-1">
-              <span class="text-1 text-style-5">The leak </span>
-              <span class="text-2 text-style-6 text-italic">nobody <mark class="animated-underline primary-50"><span class="mark-text">tells you about</span></mark>.</span>
-            </h2>
-            <div class="description gray">
-              <p>Someone in Cardiff searches for what you do, taps your website, waits — and
-                goes back to Google. You never hear about it. There is no missed-call list for
-                this, no voicemail, no note through the door. It just quietly does not happen.</p>
-              <p>The numbers below are the industry averages. Your site might be better than
-                them. It might be a great deal worse. The only way to know is to measure it,
-                which is what the audit is for.</p>
+          <div class="sjh-leak-split">
+
+            <div class="sjh-leak-copy">
+              <h2 class="title black text-gradient scheme-1">
+                <span class="text-1 text-style-5">The leak </span>
+                <span class="text-2 text-style-6 text-italic">nobody <mark class="animated-underline primary-50"><span class="mark-text">tells you about</span></mark>.</span>
+              </h2>
+
+              <ul class="sjh-leak-list">
+              <li class="sjh-leak-step">
+                <span class="sjh-leak-ico" aria-hidden="true"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                <span class="sjh-leak-txt">
+                  <strong>They tap your link</strong>
+                  <span>Someone in Cardiff searches for what you do, and taps through to your website.</span>
+                </span>
+              </li>
+              <li class="sjh-leak-step">
+                <span class="sjh-leak-ico" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
+                <span class="sjh-leak-txt">
+                  <strong>They wait</strong>
+                  <span>And wait. This is the moment it goes wrong, and it takes about three seconds.</span>
+                </span>
+              </li>
+              <li class="sjh-leak-step">
+                <span class="sjh-leak-ico" aria-hidden="true"><i class="fa-solid fa-reply"></i></span>
+                <span class="sjh-leak-txt">
+                  <strong>They go back to Google</strong>
+                  <span>Straight on to whoever loads faster — usually whoever is nearest you.</span>
+                </span>
+              </li>
+              <li class="sjh-leak-step">
+                <span class="sjh-leak-ico" aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+                <span class="sjh-leak-txt">
+                  <strong>You never hear about it</strong>
+                  <span>No missed-call list. No voicemail. No note through the door. It just quietly does not happen.</span>
+                </span>
+              </li>
+              </ul>
+
+              <p class="sjh-leak-foot">The numbers below are the industry averages. Your site
+                might be better than them. It might be a great deal worse. The only way to know
+                is to measure it, which is what the audit is for.</p>
             </div>
+
+            <!-- The leak itself. Decorative — the list to its left carries the
+                 meaning, so it is hidden from screen readers. -->
+            <div class="sjh-leak-visual" aria-hidden="true">
+              <div class="sjh-leak-panel">
+                <canvas class="sjh-leak-canvas"></canvas>
+              </div>
+              <p class="sjh-leak-cap">Traffic in. Most of it straight back out.</p>
+            </div>
+
           </div>
 
           <!-- Stat counters -->
@@ -576,7 +616,8 @@
     </svg>
 
     <!-- JavaScript -->
-    <script src="assets/js/main.js?v=2026-08-22d"></script>
+    <script src="assets/js/main.js?v=2026-08-22f"></script>
+    <script src="assets/js/leak.js?v=2026-08-22f"></script>
 
     <!-- Footer year: keeps the copyright current without editing the file each January -->
     <script>
