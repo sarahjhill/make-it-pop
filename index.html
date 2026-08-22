@@ -54,14 +54,14 @@
     </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-12a" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-22b" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-22b" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-12a" />
-    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-12a" />
-    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-12a" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-12a" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-22b" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-22b" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-22b" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-22b" />
 
   </head>
 
@@ -545,8 +545,8 @@
               </div>
 
               <h2 class="title text-style-3 white">
-                <span class="text-1">Already have a site</span>
-                <span class="text-2 text-outline"> that is quietly <mark class="animated-underline tertiary">losing you money</mark>?</span>
+                <span class="text-1">Have a site</span>
+                <span class="text-2 text-outline"> that is throwing money <mark class="animated-underline tertiary">out the window</mark>?</span>
               </h2>
 
               <div class="description text-style-12 white-50">
@@ -743,95 +743,127 @@
                   and nothing committed until you say so.</p>
               </div>
 
-              <!-- Progress tracker -->
-              <div class="sjh-tracker" role="img"
-                   aria-label="Six step process. You are at step one, getting in touch.">
-                <div class="sjh-track-line" aria-hidden="true"></div>
-                <ol class="sjh-track">
-                  <li class="sjh-track-step is-here">
-                    <span class="sjh-dot">1</span>
-                    <span class="sjh-step-name">You get in touch</span>
-                    <span class="sjh-here">You are here</span>
+              <!-- The process, as a rail.
+                   One column at every width: the line fills as it advances and
+                   the open step shows its detail in place, so where-you-are and
+                   what-happens are never separated. It plays through on its own
+                   and stops the moment someone takes over. Without JavaScript
+                   every step is simply open. -->
+              <ol class="sjh-rail">
+                <span class="sjh-rail-track" aria-hidden="true"></span>
+                <span class="sjh-rail-fill" aria-hidden="true"></span>
+                  <li class="sjh-rail-step is-on">
+                    <button type="button" class="sjh-rail-btn" aria-expanded="true">
+                      <span class="sjh-rail-dot" aria-hidden="true">1</span>
+                      <span class="sjh-rail-title">You tell me what you need</span>
+                      <span class="sjh-rail-here">You are here</span>
+                    </button>
+                    <div class="sjh-rail-body">
+                      <p class="sjh-rail-text">A handful of straightforward questions about your business and what is frustrating you — in your own words, in your own time.</p>
+                      <p class="sjh-rail-need">
+                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                        <span><strong>From you:</strong> about five minutes.</span>
+                      </p>
+                    </div>
                   </li>
-                  <li class="sjh-track-step"><span class="sjh-dot">2</span><span class="sjh-step-name">We have a chat</span></li>
-                  <li class="sjh-track-step"><span class="sjh-dot">3</span><span class="sjh-step-name">I do the digging</span></li>
-                  <li class="sjh-track-step"><span class="sjh-dot">4</span><span class="sjh-step-name">Plan &amp; price</span></li>
-                  <li class="sjh-track-step"><span class="sjh-dot">5</span><span class="sjh-step-name">You watch it grow</span></li>
-                  <li class="sjh-track-step"><span class="sjh-dot">6</span><span class="sjh-step-name">It goes live</span></li>
-                </ol>
-              </div>
+                  <li class="sjh-rail-step">
+                    <button type="button" class="sjh-rail-btn" aria-expanded="false">
+                      <span class="sjh-rail-dot" aria-hidden="true">2</span>
+                      <span class="sjh-rail-title">We have a proper chat</span>
+                    </button>
+                    <div class="sjh-rail-body">
+                      <p class="sjh-rail-text">A relaxed call about your customers and what you are really trying to fix. I will tell you honestly if I am not the right person — and who is.</p>
+                      <p class="sjh-rail-need">
+                        <i class="fa-solid fa-user" aria-hidden="true"></i>
+                        <span><strong>From you:</strong> 45 minutes. Still free.</span>
+                      </p>
+                    </div>
+                  </li>
+                  <li class="sjh-rail-step">
+                    <button type="button" class="sjh-rail-btn" aria-expanded="false">
+                      <span class="sjh-rail-dot" aria-hidden="true">3</span>
+                      <span class="sjh-rail-title">I get to know your customers</span>
+                    </button>
+                    <div class="sjh-rail-body">
+                      <p class="sjh-rail-text">I look at how people actually use your site, what your competitors do, and where you are losing people. Evidence, not guesswork.</p>
+                      <p class="sjh-rail-need">
+                        <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                        <span><strong>From you:</strong> nothing. This bit is mine.</span>
+                      </p>
+                    </div>
+                  </li>
+                  <li class="sjh-rail-step">
+                    <button type="button" class="sjh-rail-btn" aria-expanded="false">
+                      <span class="sjh-rail-dot" aria-hidden="true">4</span>
+                      <span class="sjh-rail-title">You get a plan and a price</span>
+                    </button>
+                    <div class="sjh-rail-body">
+                      <p class="sjh-rail-text">One document: what I will build, what it costs, when it will be done, and what is deliberately not included. No surprise invoices, ever.</p>
+                      <p class="sjh-rail-need">
+                        <i class="fa-solid fa-sterling-sign" aria-hidden="true"></i>
+                        <span><strong>From you:</strong> a yes, a no, or a question.</span>
+                      </p>
+                    </div>
+                  </li>
+                  <li class="sjh-rail-step">
+                    <button type="button" class="sjh-rail-btn" aria-expanded="false">
+                      <span class="sjh-rail-dot" aria-hidden="true">5</span>
+                      <span class="sjh-rail-title">You watch it take shape</span>
+                    </button>
+                    <div class="sjh-rail-body">
+                      <p class="sjh-rail-text">Sketches, then designs, then the real thing. You get your own private page showing where we are and anything I need from you.</p>
+                      <p class="sjh-rail-need">
+                        <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+                        <span><strong>From you:</strong> your thoughts at a few agreed points.</span>
+                      </p>
+                    </div>
+                  </li>
+                  <li class="sjh-rail-step">
+                    <button type="button" class="sjh-rail-btn" aria-expanded="false">
+                      <span class="sjh-rail-dot" aria-hidden="true">6</span>
+                      <span class="sjh-rail-title">It goes live — and I stay put</span>
+                    </button>
+                    <div class="sjh-rail-body">
+                      <p class="sjh-rail-text">I launch it, check it properly on real phones and computers, and show you how to run it. Then I am still here for a month afterwards.</p>
+                      <p class="sjh-rail-need">
+                        <i class="fa-solid fa-check" aria-hidden="true"></i>
+                        <span><strong>From you:</strong> somewhere to send the champagne.</span>
+                      </p>
+                    </div>
+                  </li>
+              </ol>
 
-              <!-- Steps -->
-              <div class="sjh-steps">
-                <div class="sjh-card is-first">
-                  <span class="sjh-num">1</span>
-                  <h3 class="sjh-card-title">You tell me what you need</h3>
-                  <p class="sjh-card-body">A handful of straightforward questions about your business and
-                    what is frustrating you — in your own words, in your own time.</p>
-                  <p class="sjh-card-need"><strong>From you:</strong> about five minutes.</p>
-                </div>
-
-                <div class="sjh-card">
-                  <span class="sjh-num">2</span>
-                  <h3 class="sjh-card-title">We have a proper chat</h3>
-                  <p class="sjh-card-body">A relaxed call about your customers and what you are really
-                    trying to fix. I will tell you honestly if I am not the right person — and who is.</p>
-                  <p class="sjh-card-need"><strong>From you:</strong> 45 minutes. Still free.</p>
-                </div>
-
-                <div class="sjh-card">
-                  <span class="sjh-num">3</span>
-                  <h3 class="sjh-card-title">I get to know your customers</h3>
-                  <p class="sjh-card-body">I look at how people actually use your site, what your
-                    competitors do, and where you are losing people. Evidence, not guesswork.</p>
-                  <p class="sjh-card-need"><strong>From you:</strong> nothing. This bit is mine.</p>
-                </div>
-
-                <div class="sjh-card">
-                  <span class="sjh-num">4</span>
-                  <h3 class="sjh-card-title">You get a plan and a price</h3>
-                  <p class="sjh-card-body">One document: what I will build, what it costs, when it will be
-                    done, and what is deliberately not included. No surprise invoices, ever.</p>
-                  <p class="sjh-card-need"><strong>From you:</strong> a yes, a no, or a question.</p>
-                </div>
-
-                <div class="sjh-card">
-                  <span class="sjh-num">5</span>
-                  <h3 class="sjh-card-title">You watch it take shape</h3>
-                  <p class="sjh-card-body">Sketches, then designs, then the real thing. You get your own
-                    private page showing where we are and anything I need from you.</p>
-                  <p class="sjh-card-need"><strong>From you:</strong> your thoughts at a few agreed points.</p>
-                </div>
-
-                <div class="sjh-card">
-                  <span class="sjh-num">6</span>
-                  <h3 class="sjh-card-title">It goes live — and I stay put</h3>
-                  <p class="sjh-card-body">I launch it, check it properly on real phones and computers,
-                    and show you how to run it. Then I am still here for a month afterwards.</p>
-                  <p class="sjh-card-need"><strong>From you:</strong> somewhere to send the champagne.</p>
-                </div>
-              </div>
-
-              <!-- Call to action -->
               <div class="sjh-cta">
-                <p class="sjh-cta-title">Ready to start at step one?</p>
-                <p class="sjh-cta-sub">Answer a few questions and I will come back to you within two
-                  working days with my honest thoughts on whether I can help.</p>
+                <div class="sjh-cta-inner">
 
-                <a href="https://sarahjhill.github.io/project-os/forms/intake.html"
-                   class="button outline white tertiary-hover magnetic-effect">
-                  <span class="button-text white white-hover">Start my project enquiry</span>
-                  <i class="fa-solid fa-arrow-right button-icon white white-hover"></i>
-                </a>
+                  <!-- Contact globe. Decorative: the meaning is in the copy. -->
+                  <div class="sjh-cta-visual" aria-hidden="true">
+                    <div class="sjh-globe"><canvas class="sjh-globe-canvas"></canvas></div>
+                    <p class="sjh-globe-note">Wherever you are, it lands in Cardiff</p>
+                  </div>
 
-                <ul class="sjh-cta-points">
-                  <li><i class="fa-solid fa-clock" aria-hidden="true"></i> About 5 minutes</li>
-                  <li><i class="fa-solid fa-lock-open" aria-hidden="true"></i> No commitment, no cost</li>
-                  <li><i class="fa-solid fa-reply" aria-hidden="true"></i> A reply within 2 working days</li>
-                </ul>
+                  <div class="sjh-cta-body">
+                    <p class="sjh-cta-eyebrow">Step one</p>
+                    <p class="sjh-cta-title">Tell me what you need</p>
+                    <p class="sjh-cta-sub">A few straightforward questions. I will come back to you
+                      within two working days with my honest thoughts on whether I can help.</p>
 
-                <p class="sjh-cta-alt">Just want to ask something first?
-                  <a href="mailto:hantaah21@gmail.com">Email me directly</a>.</p>
+                    <a href="https://sarahjhill.github.io/project-os/forms/intake.html"
+                       class="sjh-cta-btn magnetic-effect">
+                      <span>Start my project enquiry</span>
+                      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+
+                    <ul class="sjh-cta-points">
+                      <li><i class="fa-solid fa-clock" aria-hidden="true"></i> About 5 minutes</li>
+                      <li><i class="fa-solid fa-lock-open" aria-hidden="true"></i> No commitment, no cost</li>
+                      <li><i class="fa-solid fa-reply" aria-hidden="true"></i> A reply within 2 working days</li>
+                    </ul>
+
+                    <p class="sjh-cta-alt">Rather just ask something first?
+                      <a href="mailto:sarah@sarahjhill.com">Email me directly</a>.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -896,9 +928,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link has-icon" href="mailto:hantaah21@gmail.com">
+                    <a class="nav-link has-icon" href="mailto:sarah@sarahjhill.com">
                       <i class="fa-solid fa-envelope icon" aria-hidden="true"></i>
-                      <span class="text">hantaah21@gmail.com</span>
+                      <span class="text">sarah@sarahjhill.com</span>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -979,7 +1011,8 @@
     </svg>
 
     <!-- JavaScript -->
-    <script src="assets/js/main.js?v=2026-08-12a"></script>
+    <script src="assets/js/main.js?v=2026-08-22b"></script>
+    <script src="assets/js/globe.js?v=2026-08-22b"></script>
 
     <!-- Portfolio covers: load the real site on hover.
          Nothing loads until you point at a card, only one frame is alive at a
