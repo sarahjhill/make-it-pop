@@ -461,4 +461,114 @@ document.addEventListener('DOMContentLoaded', function () {
 		}, { passive: true });
 	}
 
+
+	/* 13. Process rail ---------------------------------------------------------
+	   Six steps in one column. It plays through on its own so the whole
+	   process is visible without anyone realising it is interactive, pauses
+	   on hover or focus, and steps aside for good once someone actually
+	   chooses a step. The bodies start open in the HTML and are only
+	   collapsed once this runs, so without JavaScript nothing is hidden. */
+	var rail = document.querySelector('.sjh-hello .sjh-rail');
+
+	if (rail) {
+		var railSteps = Array.prototype.slice.call(rail.querySelectorAll('.sjh-rail-step'));
+		var railBtns = railSteps.map(function (s) { return s.querySelector('.sjh-rail-btn'); });
+		var railFill = rail.querySelector('.sjh-rail-fill');
+		var DWELL = 4500;
+		var railAt = 0, railTimer = null, railPaused = false;
+		var railAuto = !(window.matchMedia &&
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+		rail.setAttribute('data-js', 'on');
+
+		function railShow(i) {
+			railAt = (i + railSteps.length) % railSteps.length;
+			railSteps.forEach(function (step, n) {
+				var on = n === railAt;
+				step.classList.toggle('is-on', on);
+				step.classList.toggle('is-done', n < railAt);
+				if (railBtns[n]) { railBtns[n].setAttribute('aria-expanded', on ? 'true' : 'false'); }
+			});
+			trackFill();
+		}
+
+		/* The dot only reaches its final position once the previous step has
+		   finished collapsing, so a single measurement taken now lands about
+		   a body-height too low. Follow it for the length of the transition
+		   instead: the CSS eases each correction, so it still reads as one
+		   smooth movement. */
+		function measureFill() {
+			if (!railFill) { return; }
+			var dot = railSteps[railAt].querySelector('.sjh-rail-dot');
+			var dr = dot.getBoundingClientRect();
+			var rr = rail.getBoundingClientRect();
+			railFill.style.height = Math.max(0, (dr.top - rr.top) + (dr.height / 2) - 22) + 'px';
+		}
+
+		var trackRaf = 0;
+		function trackFill() {
+			if (trackRaf) { window.cancelAnimationFrame(trackRaf); }
+			var until = (window.performance ? performance.now() : Date.now()) + 700;
+			(function step() {
+				measureFill();
+				var now = window.performance ? performance.now() : Date.now();
+				trackRaf = now < until ? window.requestAnimationFrame(step) : 0;
+			})();
+		}
+
+		function railNext() {
+			railShow(railAt + 1);
+			railTimer = window.setTimeout(railNext, DWELL);
+		}
+
+		function railStart() {
+			if (!railAuto || railPaused || railTimer) { return; }
+			railTimer = window.setTimeout(railNext, DWELL);
+		}
+
+		function railStop(permanent) {
+			if (railTimer) { window.clearTimeout(railTimer); railTimer = null; }
+			if (permanent) { railAuto = false; }
+		}
+
+		railBtns.forEach(function (btn, i) {
+			if (!btn) { return; }
+			btn.addEventListener('click', function () { railStop(true); railShow(i); });
+			btn.addEventListener('keydown', function (e) {
+				var k = e.key, to = null;
+				if (k === 'ArrowDown' || k === 'ArrowRight') { to = i + 1; }
+				else if (k === 'ArrowUp' || k === 'ArrowLeft') { to = i - 1; }
+				else if (k === 'Home') { to = 0; }
+				else if (k === 'End') { to = railSteps.length - 1; }
+				if (to === null) { return; }
+				e.preventDefault();
+				railStop(true);
+				railShow(to);
+				railBtns[railAt].focus();
+			});
+		});
+
+		rail.addEventListener('mouseenter', function () { railPaused = true; railStop(false); });
+		rail.addEventListener('mouseleave', function () { railPaused = false; railStart(); });
+		rail.addEventListener('focusin', function () { railPaused = true; railStop(false); });
+		rail.addEventListener('focusout', function () { railPaused = false; railStart(); });
+
+		document.addEventListener('visibilitychange', function () {
+			if (document.hidden) { railStop(false); } else { railStart(); }
+		});
+
+		window.addEventListener('resize', function () { measureFill(); });
+
+		railShow(0);
+
+		if ('IntersectionObserver' in window) {
+			new IntersectionObserver(function (entries) {
+				if (entries[0].isIntersecting) { railStart(); } else { railStop(false); }
+			}, { threshold: 0.2 }).observe(rail);
+		} else {
+			railStart();
+		}
+	}
+
+
 });
