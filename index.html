@@ -54,14 +54,14 @@
     </noscript>
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-22b" />
-    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-22b" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css?v=2026-08-22d" />
+    <link rel="stylesheet" href="assets/css/icons.css?v=2026-08-22d" />
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-22b" />
-    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-22b" />
-    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-22b" />
-    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-22b" />
+    <link rel="stylesheet" href="assets/css/theme.css?v=2026-08-22d" />
+    <link rel="stylesheet" href="assets/css/core.css?v=2026-08-22d" />
+    <link rel="stylesheet" href="assets/css/main.css?v=2026-08-22d" />
+    <link rel="stylesheet" href="assets/css/custom.css?v=2026-08-22d" />
 
   </head>
 
@@ -314,7 +314,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Community"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/many-voices/">
-                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/many-voices-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Many Voices homepage" />
+                        <img loading="eager" fetchpriority="high" decoding="async" width="640" height="400" src="assets/images/portfolio/many-voices-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Many Voices homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Community</span>
@@ -335,7 +335,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Websites"]'>
                     <article class="sjh-work">
                       <div class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/muslimah-web-design/">
-                        <img loading="lazy" decoding="async" width="640" height="400" src="assets/images/portfolio/muslimah-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Muslimah Web Design homepage" />
+                        <img loading="eager" fetchpriority="high" decoding="async" width="640" height="400" src="assets/images/portfolio/muslimah-live.webp" class="sjh-work-shot sjh-work-mock" alt="The Muslimah Web Design homepage" />
                       </div>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Small business</span>
@@ -352,15 +352,15 @@
                     </article>
                   </div>
 
-                  <!-- Cardiff Community Meals.
-                       No screenshot yet, so this uses the tone/initial cover
-                       fallback rather than a placeholder image. Swap in a
-                       .webp shot the same way as the others when there is one. -->
+                  <!-- Cardiff Community Meals -->
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Community"]'>
                     <article class="sjh-work">
-                      <a href="cardiff-community-meals.html" class="sjh-work-cover" data-tone="3"
+                      <a href="cardiff-community-meals.html" class="sjh-work-cover has-shot"
                          data-live="https://sarahjhill.github.io/cardiff-community-meals/">
-                        <span class="sjh-work-initial" aria-hidden="true">CCM</span>
+                        <img loading="lazy" decoding="async" width="640" height="400"
+                             src="assets/images/portfolio/cardiff-live.webp"
+                             class="sjh-work-shot sjh-work-mock"
+                             alt="The Cardiff Community Meals homepage" />
                       </a>
                       <div class="sjh-work-body">
                         <span class="sjh-work-kind">Community platform</span>
@@ -382,7 +382,7 @@
                   <div class="col-12 col-md-6 col-lg-4 shuffle-item" data-groups='["Tools"]'>
                     <article class="sjh-work">
                       <a href="project-os.html" class="sjh-work-cover has-shot" data-live="https://sarahjhill.github.io/project-os/">
-                        <img loading="lazy" decoding="async" width="640" height="387" src="assets/images/portfolio/projectos-responsive.webp" class="sjh-work-shot sjh-work-mock"
+                        <img loading="eager" fetchpriority="high" decoding="async" width="640" height="387" src="assets/images/portfolio/projectos-responsive.webp" class="sjh-work-shot sjh-work-mock"
                              alt="The SJH Process shown on desktop, laptop, tablet and phone" />
                       </a>
                       <div class="sjh-work-body">
@@ -1011,16 +1011,39 @@
     </svg>
 
     <!-- JavaScript -->
-    <script src="assets/js/main.js?v=2026-08-22b"></script>
-    <script src="assets/js/globe.js?v=2026-08-22b"></script>
+    <script src="assets/js/main.js?v=2026-08-22d"></script>
+    <script src="assets/js/globe.js?v=2026-08-22d"></script>
 
     <!-- Portfolio covers: load the real site on hover.
          Nothing loads until you point at a card, only one frame is alive at a
-         time, and the frame never takes the mouse wheel. -->
+         time, and the frame never takes the mouse wheel.
+
+         The still image stays up until the frame has actually PAINTED. The
+         earlier version swapped on hover and left you looking at the empty
+         card background — which is nearly black — for as long as the site
+         took to answer. If a frame does not load within four seconds we give
+         up and keep the photograph, which is a perfectly good outcome. -->
     <script>
       (function () {
-        if (!window.matchMedia('(hover: hover)').matches) return;
-        var FRAME_W = 1280, FRAME_H = 3200, current = null;
+        if (!window.fetch) return;
+        var canHover = window.matchMedia('(hover: hover)').matches;
+        var FRAME_W = 1280, FRAME_H = 3200, LOAD_TIMEOUT = 4000, current = null;
+
+        function travelTo(cover) {
+          var fit = cover.clientWidth / FRAME_W;
+          cover.style.setProperty('--sjh-fit', fit);
+          void cover.offsetWidth;
+          var travel = Math.max(0, FRAME_H - cover.clientHeight / fit);
+          cover.style.setProperty('--sjh-travel', '0px');
+          cover.classList.add('is-live');
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              if (cover.classList.contains('is-live')) {
+                cover.style.setProperty('--sjh-travel', -travel + 'px');
+              }
+            });
+          });
+        }
 
         function start(cover) {
           if (cover.classList.contains('is-live')) return;
@@ -1028,37 +1051,57 @@
           current = cover;
 
           var frame = cover.querySelector('.sjh-work-live');
-          if (!frame) {
+
+          if (frame && frame.dataset.ready === '1') { travelTo(cover); return; }
+          if (frame || cover.classList.contains('is-loading')) { return; }
+          if (cover.classList.contains('is-shy')) { return; }
+
+          /* Ask whether the site is actually reachable before framing it.
+             A no-cors fetch gives an opaque response we cannot read, but it
+             RESOLVES on success and REJECTS on a network failure — and that is
+             the only part we need. Without this check a dead site paints the
+             browser's own error page over the photograph, which is exactly the
+             grey rectangle this whole thing was meant to avoid. The iframe
+             then reuses the cached response, so it costs one request, once. */
+          cover.classList.add('is-loading');
+          var url = cover.dataset.live;
+
+          var settled = false;
+          var giveUp = window.setTimeout(function () {
+            if (settled) { return; }
+            settled = true;
+            cover.classList.remove('is-loading');
+            cover.classList.add('is-shy');
+          }, LOAD_TIMEOUT);
+
+          fetch(url, { mode: 'no-cors', cache: 'force-cache' }).then(function () {
+            if (settled) { return; }
+            settled = true;
+            window.clearTimeout(giveUp);
+            cover.classList.remove('is-loading');
+
             frame = document.createElement('div');
             frame.className = 'sjh-work-live';
             var inner = document.createElement('iframe');
-            inner.setAttribute('loading', 'lazy');
             inner.setAttribute('scrolling', 'no');
             inner.setAttribute('tabindex', '-1');
             inner.setAttribute('aria-hidden', 'true');
             inner.setAttribute('referrerpolicy', 'no-referrer');
             inner.title = 'Live preview';
-            inner.src = cover.dataset.live;
+            inner.addEventListener('load', function () {
+              frame.dataset.ready = '1';
+              if (current === cover) { travelTo(cover); }
+            });
+            inner.src = url;
             frame.appendChild(inner);
             cover.appendChild(frame);
-          }
-
-          var fit = cover.clientWidth / FRAME_W;
-          cover.style.setProperty('--sjh-fit', fit);
-          // Force a style flush so the frame is already scaled before the
-          // is-live class reveals it. Without this the first hover can paint
-          // one frame at full size.
-          void cover.offsetWidth;
-          // How far the frame may travel: everything below the visible window,
-          // expressed in unscaled pixels because translate runs before scale.
-          var travel = Math.max(0, FRAME_H - cover.clientHeight / fit);
-          cover.style.setProperty('--sjh-travel', '0px');
-          cover.classList.add('is-live');
-          // Let it paint at the top, then begin the slow scroll.
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-              cover.style.setProperty('--sjh-travel', -travel + 'px');
-            });
+          })['catch'](function () {
+            if (settled) { return; }
+            settled = true;
+            window.clearTimeout(giveUp);
+            /* Unreachable. Keep the photograph and stop offering a preview. */
+            cover.classList.remove('is-loading');
+            cover.classList.add('is-shy');
           });
         }
 
@@ -1069,11 +1112,41 @@
         }
 
         document.querySelectorAll('.sjh-work-cover[data-live]').forEach(function (cover) {
-          var card = cover.closest('.sjh-work') || cover;
-          card.addEventListener('mouseenter', function () { start(cover); });
-          card.addEventListener('mouseleave', function () { stop(cover); });
-          card.addEventListener('focusin', function () { start(cover); });
-          card.addEventListener('focusout', function () { stop(cover); });
+          if (canHover) {
+            var card = cover.closest('.sjh-work') || cover;
+            card.addEventListener('mouseenter', function () { start(cover); });
+            card.addEventListener('mouseleave', function () { stop(cover); });
+            card.addEventListener('focusin', function () { start(cover); });
+            card.addEventListener('focusout', function () { stop(cover); });
+            return;
+          }
+
+          /* Touch: nothing loads until it is asked for. Eight live frames
+             arriving unbidden on a phone would undo the thing this site
+             promises about loading quickly on a bad connection, so the
+             preview is opt-in, one at a time, and stops when tapped again.
+             The button is its own element because some covers are links. */
+          var play = document.createElement('button');
+          play.type = 'button';
+          play.className = 'sjh-work-play';
+          play.innerHTML = '<i class="fa-solid fa-arrow-right" aria-hidden="true"></i><span>See it live</span>';
+          play.setAttribute('aria-label', 'Play a preview of this site');
+
+          play.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (cover.classList.contains('is-live')) {
+              stop(cover);
+              play.classList.remove('is-playing');
+              play.querySelector('span').textContent = 'See it live';
+            } else {
+              start(cover);
+              play.classList.add('is-playing');
+              play.querySelector('span').textContent = 'Stop';
+            }
+          });
+
+          cover.appendChild(play);
         });
       })();
     </script>

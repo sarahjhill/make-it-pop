@@ -1621,7 +1621,7 @@ filled in, and it's obvious at a glance what still needs replacing.
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #1c1c1c;
+  background: linear-gradient(135deg, #2b2350, #123a52);
 }
 
 .sjh-work-shot {
@@ -1864,8 +1864,15 @@ filled in, and it's obvious at a glance what still needs replacing.
 .sjh-work-cover.has-shot {
   position: relative;
   overflow: hidden;
-  background: #11161a;
+  /* A brand-tinted ground rather than near-black. This is what shows while a
+     lazy image is still arriving, and a dark rectangle reads as a broken card
+     where a tinted one reads as a loading one. */
+  background: linear-gradient(135deg, #2b2350, #123a52);
 }
+
+/* A card whose live frame refused to load, or took too long. It simply keeps
+   its photograph and stops advertising a preview that is not coming. */
+.sjh-work-cover.is-shy::after { display: none; }
 
 .sjh-work-mock {
   position: absolute;
@@ -1876,8 +1883,7 @@ filled in, and it's obvious at a glance what still needs replacing.
   object-fit: cover;
   object-position: center;
   opacity: 1;
-  transition: opacity .5s ease;
-  z-index: 2;
+  z-index: 1;
 }
 
 .sjh-work-live {
@@ -1896,14 +1902,14 @@ filled in, and it's obvious at a glance what still needs replacing.
      has only the translateY left to animate. */
   transform: scale(var(--sjh-fit, .25)) translateY(0);
   transition: opacity .5s ease;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* --sjh-fit is the scale that makes 1280px fit the card, set in JS.
-   --sjh-travel is how far it may slide before the page ends. */
-.sjh-work-cover.is-live .sjh-work-mock {
-  opacity: 0;
-}
+   --sjh-travel is how far it may slide before the page ends.
+   The photograph underneath is deliberately left visible: it costs nothing
+   once the frame paints over it, and it is what you see instead of an empty
+   card while the frame is still on its way. */
 
 .sjh-work-cover.is-live .sjh-work-live {
   opacity: 1;
@@ -1952,10 +1958,44 @@ filled in, and it's obvious at a glance what still needs replacing.
 
 /* Touch devices get no hover, and eight iframes on a phone would be unkind.
    The still image is the whole experience there. */
+/* Touch: the preview is opt-in, so the frame is only in the way until it is
+   asked for. The "Live" flag is replaced by a real control. */
 @media (hover: none) {
-  .sjh-work-live { display: none; }
-  .sjh-work-cover.is-live .sjh-work-mock { opacity: 1; transform: none; }
+  .sjh-work-cover:not(.is-live) .sjh-work-live { display: none; }
   .sjh-work-cover[data-live]::after { display: none; }
+}
+
+.sjh-work-play { display: none; }
+
+@media (hover: none) {
+  .sjh-work-cover[data-live] .sjh-work-play {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 3;
+    padding: 8px 14px;
+    min-height: 44px;              /* a real hit target, not a decoration */
+    border: 0;
+    border-radius: 999px;
+    background: rgba(17, 22, 26, .82);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-family: var(--secondary-font);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    cursor: pointer;
+  }
+
+  .sjh-work-cover[data-live].is-shy .sjh-work-play { display: none; }
+
+  .sjh-work-play.is-playing { background: #ff1791; }
+  .sjh-work-play.is-playing i { transform: rotate(90deg); }
+  .sjh-work-play i { font-size: 11px; transition: transform .3s ease; }
 }
 
 /* ==========================================================================
